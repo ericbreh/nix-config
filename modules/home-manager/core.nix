@@ -12,7 +12,6 @@
     ripgrep
     lazygit
     fd
-    clang
     gnupg
   ];
 }

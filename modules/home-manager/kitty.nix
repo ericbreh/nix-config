@@ -3,6 +3,23 @@
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.kitty];
-  home.file.".config/kitty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dots/kitty/.config/kitty";
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "MesloLGS Nerd Font Mono";
+      size = 12;
+    };
+    keybindings = {
+      "ctrl+v" = "paste_from_clipboard";
+      "ctrl+c" = "copy_or_interrupt";
+      "ctrl+backspace" = "send_text all \\x17";
+      "ctrl+delete" = "send_text all \\x1b[3;5~";
+    };
+    settings = {
+      background = "#171717";
+      hide_window_decorations = "yes";
+      enable_audio_bell = "no";
+      confirm_os_window_close = 2;
+    };
+  };
 }

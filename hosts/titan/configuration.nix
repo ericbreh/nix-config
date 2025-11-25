@@ -10,6 +10,7 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   imports = [
     ./hardware-configuration.nix
+    ./../../modules/nixos
     # inputs.home-manager.nixosModules.default
   ];
 
