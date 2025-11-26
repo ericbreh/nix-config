@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake";
+  description = "nix-config flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -20,6 +20,14 @@
       modules = [
         ./hosts/titan/configuration.nix
         inputs.home-manager.nixosModules.default
+      ];
+    };
+
+    homeConfigurations.ubuntu = inputs.home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      extraSpecialArgs = {inherit inputs;};
+      modules = [
+        ./hosts/ubuntu/home.nix
       ];
     };
   };
