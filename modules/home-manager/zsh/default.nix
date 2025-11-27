@@ -25,6 +25,9 @@ in {
     oh-my-zsh.enable = true;
     syntaxHighlighting.enable = true;
     autosuggestion.enable = true;
+    envExtra = ''
+      export ZSH_DISABLE_COMPFIX="true"
+    '';
 
     shellAliases = {
       rcat = "command cat";

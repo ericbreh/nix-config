@@ -11,5 +11,6 @@
     ./pandoc.nix
     ./texlive.nix
     ./direnv.nix
+    ./distrobox.nix
   ];
 }

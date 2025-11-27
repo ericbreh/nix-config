@@ -4,14 +4,14 @@
     zip
     wget
     curl
+    ripgrep
+    fd
+    wl-clipboard
     uv
     tree
     ncdu
     fastfetch
     btop
-    ripgrep
     lazygit
-    fd
-    gnupg
   ];
 }

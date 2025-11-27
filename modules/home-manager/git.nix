@@ -1,9 +1,9 @@
-{pkgs, ...}: {
+{...}: {
   programs.git = {
     enable = true;
-    userName = "Eric Chuang";
-    userEmail = "ericchuang94@gmail.com";
-    extraConfig = {
+    settings = {
+      user.name = "Eric Chuang";
+      user.email = "ericchuang94@gmail.com";
       init.defaultBranch = "main";
       gpg.format = "ssh";
     };

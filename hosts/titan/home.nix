@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./../../modules/home-manager
   ];
@@ -13,12 +9,12 @@
 
   home.packages = with pkgs; [
     nerd-fonts.meslo-lg
-    wl-clipboard
     qbittorrent
     spotify
     signal-desktop
     gemini-cli
     bitwarden-desktop
+    rustdesk-flutter
   ];
 
   programs.home-manager.enable = true;
