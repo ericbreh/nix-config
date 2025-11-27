@@ -15,14 +15,14 @@
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = false;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = true;
-    device = "nodev";
-    useOSProber = true;
-  };
+  # boot.loader.grub = {
+  #   enable = true;
+  #   efiSupport = true;
+  #   device = "nodev";
+  #   useOSProber = true;
+  # };
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;

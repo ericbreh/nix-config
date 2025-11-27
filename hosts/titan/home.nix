@@ -18,6 +18,7 @@
     spotify
     signal-desktop
     gemini-cli
+    bitwarden-desktop
   ];
 
   programs.home-manager.enable = true;
