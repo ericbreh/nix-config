@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   rebuild-nix = pkgs.writeShellScript "rebuild-nix.sh" ''
     #!/usr/bin/env bash
     set -euo pipefail
@@ -10,12 +6,9 @@
     alejandra . > /dev/null 2>&1
     git add .
     if grep -q '^ID=nixos$' /etc/os-release; then
-    	sudo nixos-rebuild switch --flake $HOME/nix-config#$(hostname)
-    	gen=$(sudo nixos-rebuild list-generations | grep True | awk '{print $1}')
-    	echo "Rebuild successful, generation $gen"
+        nh os switch .
     else
-    	home-manager switch --flake $HOME/nix-config#$(hostname)
-    	echo "Rebuild successful"
+        nh home switch .
     fi
     popd >/dev/null
   '';
@@ -32,6 +25,7 @@ in {
     shellAliases = {
       rcat = "command cat";
       cat = "bat";
+      icat = "kitty +kitten icat";
       ls = "eza --group-directories-first --icons=auto";
       la = "ls -A";
       lt = "eza --tree --level=2 --long --icons --git";
@@ -90,5 +84,6 @@ in {
   };
   home.packages = with pkgs; [
     alejandra
+    nh
   ];
 }
