@@ -12,5 +12,6 @@
     ./texlive.nix
     ./direnv.nix
     ./distrobox.nix
+    ./gnome.nix
   ];
 }

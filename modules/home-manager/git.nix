@@ -6,6 +6,7 @@
       user.email = "ericchuang94@gmail.com";
       init.defaultBranch = "main";
       gpg.format = "ssh";
+      pull.rebase = true;
     };
     signing = {
       signByDefault = true;

@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   config,
   pkgs,
@@ -11,7 +8,6 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules/nixos
-    # inputs.home-manager.nixosModules.default
   ];
 
   # Bootloader.
@@ -60,9 +56,10 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
   services.desktopManager.gnome.enable = true;
   services.displayManager.gdm.enable = true;
+
+  hardware.i2c.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -96,7 +93,7 @@
   users.users.ericbreh = {
     isNormalUser = true;
     description = "Eric Chuang";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "i2c"];
     shell = pkgs.zsh;
   };
 
