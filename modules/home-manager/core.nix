@@ -12,6 +12,5 @@
     ncdu
     fastfetch
     btop
-    lazygit
   ];
 }

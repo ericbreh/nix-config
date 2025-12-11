@@ -13,5 +13,7 @@
     ./direnv.nix
     ./distrobox.nix
     ./gnome.nix
+    ./hyprland.nix
+    ./lazygit.nix
   ];
 }

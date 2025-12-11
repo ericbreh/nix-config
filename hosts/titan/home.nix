@@ -9,12 +9,18 @@
 
   home.packages = with pkgs; [
     nerd-fonts.meslo-lg
-    qbittorrent
     spotify
+    bitwarden-desktop
+    qbittorrent
+    protonvpn-gui
     signal-desktop
     gemini-cli
-    bitwarden-desktop
     rustdesk-flutter
+    handbrake
+    losslesscut-bin
+    beekeeper-studio
+    nodejs_24
+    zoom-us
   ];
 
   programs.home-manager.enable = true;
