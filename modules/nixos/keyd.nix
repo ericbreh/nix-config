@@ -1,8 +1,4 @@
 {
-  config,
-  lib,
-  ...
-}: {
   services.keyd = {
     enable = true;
     keyboards."builtin" = {
