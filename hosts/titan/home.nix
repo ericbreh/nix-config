@@ -21,7 +21,14 @@
     beekeeper-studio
     nodejs_24
     zoom-us
+    discord
+    rnote
+    inkscape
   ];
+
+  home.sessionVariables = {
+    SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/gcr/ssh";
+  };
 
   programs.home-manager.enable = true;
 }

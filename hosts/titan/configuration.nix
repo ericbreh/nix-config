@@ -49,14 +49,23 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # # Enable the X11 windowing system.
+  # services.xserver.enable = true;
+  #
+  # services.desktopManager.gnome.enable = true;
+  # services.displayManager.gdm.enable = true;
 
-  services.desktopManager.gnome.enable = true;
-  services.displayManager.gdm.enable = true;
-
-  hardware.i2c.enable = true;
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    i2c = {
+      enable = true;
+    };
+  };
   services.fprintd.enable = true;
+  services.power-profiles-daemon.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -101,6 +110,11 @@
     permittedInsecurePackages = [
       "beekeeper-studio-5.3.4"
     ];
+  };
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
   };
 
   system.stateVersion = "25.05";

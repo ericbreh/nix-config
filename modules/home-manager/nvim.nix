@@ -25,8 +25,8 @@
     rust-analyzer
     rustfmt
 
-    basedpyright
-    black
+    ty
+    ruff
 
     markdownlint-cli
 

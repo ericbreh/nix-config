@@ -16,7 +16,7 @@
     ...
   } @ inputs: {
     nixosConfigurations.titan = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs self;};
       modules = [
         ./hosts/titan/configuration.nix
         inputs.home-manager.nixosModules.default

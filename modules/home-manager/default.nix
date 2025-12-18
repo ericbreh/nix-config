@@ -12,8 +12,10 @@
     ./texlive.nix
     ./direnv.nix
     ./distrobox.nix
-    ./gnome.nix
+    # ./gnome.nix
     ./hyprland.nix
     ./lazygit.nix
+    ./nh.nix
+    ./theme.nix
   ];
 }

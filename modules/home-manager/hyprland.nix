@@ -4,22 +4,46 @@
   ...
 }: {
   home.packages = with pkgs; [
-    waybar
     wlogout
     wofi
     swaynotificationcenter
-    swayosd
     hyprlock
-    hyprpaper
-    hypridle
-    hyprsunset
-    phinger-cursors
-    cliphist
     libnotify
     grim
     slurp
+    wf-recorder
     brightnessctl
+    bluetuith
+    networkmanagerapplet
+
+    phinger-cursors
+
+    seahorse
+    nautilus
+    loupe
+    papers
+    showtime
+    gnome-disk-utility
+    baobab
   ];
+
+  services.polkit-gnome.enable = true;
+  programs.waybar = {
+    enable = true;
+    systemd = {
+      enable = true;
+    };
+  };
+  services.hypridle.enable = true;
+  services.hyprpaper.enable = true;
+  services.hyprsunset.enable = true;
+  services.swayosd.enable = true;
+  services.cliphist = {
+    enable = true;
+    allowImages = true;
+  };
+  services.network-manager-applet.enable = true;
+  services.playerctld.enable = true;
 
   home.file = {
     ".config/hypr".source =

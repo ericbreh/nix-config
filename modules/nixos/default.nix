@@ -2,7 +2,8 @@
   imports = [
     ./keyd.nix
     ./podman.nix
-    ./nh.nix
     ./hyprland.nix
+    # ./nix-ld.nix
+    ./greetd.nix
   ];
 }
