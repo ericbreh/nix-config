@@ -112,10 +112,5 @@
     ];
   };
 
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-  };
-
   system.stateVersion = "25.05";
 }
