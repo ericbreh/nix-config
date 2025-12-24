@@ -29,6 +29,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   # Set your time zone.
   services.automatic-timezoned.enable = true;
@@ -64,8 +65,10 @@
       enable = true;
     };
   };
-  services.fprintd.enable = true;
+  services.fprintd.enable = false;
   services.power-profiles-daemon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {

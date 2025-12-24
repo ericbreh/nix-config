@@ -5,5 +5,6 @@
     ./hyprland.nix
     # ./nix-ld.nix
     ./greetd.nix
+    ./steam.nix
   ];
 }
