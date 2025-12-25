@@ -61,11 +61,9 @@
       enable = true;
       powerOnBoot = true;
     };
-    i2c = {
-      enable = true;
-    };
+    i2c.enable = true;
   };
-  services.fprintd.enable = false;
+  services.fprintd.enable = true;
   services.power-profiles-daemon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;

@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     wlogout
     wofi
-    swaynotificationcenter
     hyprlock
     libnotify
     grim
@@ -25,6 +24,8 @@
     showtime
     gnome-disk-utility
     baobab
+    snapshot
+    gnome-control-center
   ];
 
   services.polkit-gnome.enable = true;
@@ -34,9 +35,10 @@
       enable = true;
     };
   };
-  services.hypridle.enable = true;
   services.hyprpaper.enable = true;
+  services.hypridle.enable = true;
   services.hyprsunset.enable = true;
+  services.mako.enable = true;
   services.swayosd.enable = true;
   services.cliphist = {
     enable = true;
@@ -54,7 +56,7 @@
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/hyprland/wlogout";
     ".config/wofi".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/hyprland/wofi";
-    ".config/swaync".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/hyprland/swaync";
+    ".config/mako".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/hyprland/mako";
   };
 }

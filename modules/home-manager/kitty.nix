@@ -16,8 +16,8 @@
       "ctrl+delete" = "send_text all \\x1b[3;5~";
     };
     settings = {
-      background = "#171717";
-      # background_opacity = 0.5;
+      # background = "#171717";
+      background_opacity = 0.5;
       hide_window_decorations = "yes";
       enable_audio_bell = "no";
       confirm_os_window_close = 2;
