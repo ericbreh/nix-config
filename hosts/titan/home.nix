@@ -26,6 +26,24 @@
     inkscape
   ];
 
+  home-manager.core.enable = true;
+  home-manager.direnv.enable = true;
+  home-manager.distrobox.enable = true;
+  home-manager.firefox.enable = true;
+  home-manager.git.enable = true;
+  home-manager.gnome.enable = false;
+  home-manager.hyprland.enable = true;
+  home-manager.kitty.enable = true;
+  home-manager.lazygit.enable = true;
+  home-manager.nh.enable = true;
+  home-manager.nvim.enable = true;
+  home-manager.pandoc.enable = true;
+  home-manager.texlive.enable = true;
+  home-manager.theme.enable = true;
+  home-manager.tmux.enable = true;
+  home-manager.vscode.enable = true;
+  home-manager.zsh.enable = true;
+
   home.sessionVariables = {
     SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/gcr/ssh";
   };

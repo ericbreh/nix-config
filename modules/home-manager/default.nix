@@ -1,21 +1,21 @@
 {...}: {
   imports = [
-    ./firefox.nix
-    ./git.nix
-    ./kitty.nix
-    ./nvim.nix
-    ./tmux.nix
-    ./zsh
     ./core.nix
-    ./vscode.nix
-    ./pandoc.nix
-    ./texlive.nix
     ./direnv.nix
     ./distrobox.nix
-    # ./gnome.nix
+    ./firefox.nix
+    ./git.nix
+    ./gnome.nix
     ./hyprland.nix
+    ./kitty.nix
     ./lazygit.nix
     ./nh.nix
+    ./nvim.nix
+    ./pandoc.nix
+    ./texlive.nix
     ./theme.nix
+    ./tmux.nix
+    ./vscode.nix
+    ./zsh
   ];
 }

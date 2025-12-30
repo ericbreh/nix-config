@@ -1,39 +1,44 @@
 {
+  lib,
   config,
   pkgs,
   ...
 }: {
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
+  options.home-manager.nvim.enable = lib.mkEnableOption "Enable nvim";
+  config = lib.mkIf config.home-manager.nvim.enable {
+    programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+    };
+
+    home.packages = with pkgs; [
+      clang
+
+      lua-language-server
+      stylua
+
+      bash-language-server
+      shfmt
+
+      nixd
+      alejandra
+
+      rust-analyzer
+      rustfmt
+
+      ty
+      ruff
+
+      markdownlint-cli
+
+      texlab
+
+      jq
+    ];
+
+    home.file.".config/nvim".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim";
   };
-
-  home.packages = with pkgs; [
-    clang
-
-    lua-language-server
-    stylua
-
-    bash-language-server
-    shfmt
-
-    nixd
-    alejandra
-
-    rust-analyzer
-    rustfmt
-
-    ty
-    ruff
-
-    markdownlint-cli
-
-    texlab
-
-    jq
-  ];
-
-  home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim";
 }

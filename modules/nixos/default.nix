@@ -1,10 +1,12 @@
 {...}: {
   imports = [
-    ./keyd.nix
-    ./podman.nix
-    ./hyprland.nix
-    # ./nix-ld.nix
+    ./gnome.nix
     ./greetd.nix
+    ./hyprland.nix
+    ./keyd.nix
+    ./niri.nix
+    ./nix-ld.nix
+    ./podman.nix
     ./steam.nix
   ];
 }
