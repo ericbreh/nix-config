@@ -7,6 +7,7 @@
     ./nh.nix
     ./niri.nix
     ./nix-ld.nix
+    ./openssh.nix
     ./podman.nix
     ./steam.nix
   ];

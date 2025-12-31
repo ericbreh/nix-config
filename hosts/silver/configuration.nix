@@ -40,11 +40,28 @@
   # time
   time.timeZone = "America/Los_Angeles";
 
+  # services
+  services.logind = {
+    settings = {
+      Login = {
+        AllowSuspend = false;
+        AllowHibernation = false;
+        AllowHybridSleep = false;
+        AllowSuspendThenHibernate = false;
+        HandleLidSwitch = "ignore";
+      };
+    };
+  };
+  services.tailscale.enable = true;
+
   users.users.ericbreh = {
     isNormalUser = true;
     description = "Eric Chuang";
     extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOanOZf0P4dP7gnyYLQ8WcxTm3ln5rFZE+J/1RhTewVR ericchuang94@gmail.com"
+    ];
   };
   programs.zsh.enable = true;
 
@@ -56,5 +73,7 @@
     };
   };
 
+  keyd.enable = true;
   nh.enable = true;
+  openssh.enable = true;
 }

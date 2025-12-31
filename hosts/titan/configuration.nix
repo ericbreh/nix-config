@@ -75,6 +75,7 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
   services.printing.enable = true;
+  services.tailscale.enable = true;
 
   users.users.ericbreh = {
     isNormalUser = true;
