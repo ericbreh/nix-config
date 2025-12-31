@@ -14,7 +14,6 @@
   home-manager.direnv.enable = true;
   home-manager.git.enable = true;
   home-manager.lazygit.enable = true;
-  home-manager.nh.enable = true;
   home-manager.nvim.enable = true;
   home-manager.tmux.enable = true;
   home-manager.zsh.enable = true;

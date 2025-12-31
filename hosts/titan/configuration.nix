@@ -96,6 +96,7 @@
   greetd.enable = true;
   hyprland.enable = true;
   keyd.enable = true;
+  nh.enable = true;
   niri.enable = false;
   nix-ld.enable = false;
   podman.enable = true;

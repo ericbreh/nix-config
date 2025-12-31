@@ -35,7 +35,6 @@
   home-manager.hyprland.enable = true;
   home-manager.kitty.enable = true;
   home-manager.lazygit.enable = true;
-  home-manager.nh.enable = true;
   home-manager.nvim.enable = true;
   home-manager.pandoc.enable = true;
   home-manager.texlive.enable = true;

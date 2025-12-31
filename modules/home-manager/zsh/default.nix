@@ -89,9 +89,5 @@ in {
         style = "plain";
       };
     };
-    home.packages = with pkgs; [
-      alejandra
-      nh
-    ];
   };
 }

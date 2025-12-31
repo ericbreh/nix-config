@@ -55,4 +55,6 @@
       "ericbreh" = import ./home.nix;
     };
   };
+
+  nh.enable = true;
 }
