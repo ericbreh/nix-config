@@ -6,11 +6,6 @@
   # nix
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config = {
-    permittedInsecurePackages = [
-      "beekeeper-studio-5.3.4"
-    ];
-  };
   system.stateVersion = "25.05";
   imports = [
     ./hardware-configuration.nix
@@ -24,7 +19,7 @@
   zramSwap.enable = true;
 
   # networking
-  networking.hostName = "titan";
+  networking.hostName = "silver";
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
 
@@ -43,43 +38,12 @@
   };
 
   # time
-  services.automatic-timezoned.enable = true;
-  services.geoclue2.enable = true;
-
-  # sound
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  # hardware
-  hardware = {
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
-    i2c.enable = true;
-  };
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  # services
-  services.fprintd.enable = true;
-  services.power-profiles-daemon.enable = true;
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
-  services.printing.enable = true;
+  time.timeZone = "America/Los_Angeles";
 
   users.users.ericbreh = {
     isNormalUser = true;
     description = "Eric Chuang";
-    extraGroups = ["networkmanager" "wheel" "i2c"];
+    extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
@@ -91,13 +55,4 @@
       "ericbreh" = import ./home.nix;
     };
   };
-
-  gnome.enable = false;
-  greetd.enable = true;
-  hyprland.enable = true;
-  keyd.enable = true;
-  niri.enable = false;
-  nix-ld.enable = false;
-  podman.enable = true;
-  steam.enable = true;
 }

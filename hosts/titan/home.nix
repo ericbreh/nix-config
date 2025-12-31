@@ -44,9 +44,5 @@
   home-manager.vscode.enable = true;
   home-manager.zsh.enable = true;
 
-  home.sessionVariables = {
-    SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/gcr/ssh";
-  };
-
   programs.home-manager.enable = true;
 }

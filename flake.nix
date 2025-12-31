@@ -10,18 +10,23 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs: {
-    nixosConfigurations.titan = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs self;};
-      modules = [
-        ./hosts/titan/configuration.nix
-        inputs.home-manager.nixosModules.default
-        inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
-      ];
+  outputs = {nixpkgs, ...} @ inputs: {
+    nixosConfigurations = {
+      titan = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/titan/configuration.nix
+          inputs.home-manager.nixosModules.default
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
+        ];
+      };
+      silver = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/silver/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
     };
   };
 }
