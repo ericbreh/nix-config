@@ -3,6 +3,7 @@
     ./gnome.nix
     ./greetd.nix
     ./hyprland.nix
+    ./immich.nix
     ./keyd.nix
     ./nh.nix
     ./niri.nix

@@ -40,6 +40,14 @@
   # time
   time.timeZone = "America/Los_Angeles";
 
+  # disks
+  fileSystems = {
+    "/srv/storage" = {
+      device = "/dev/disk/by-uuid/daf86907-e811-4bd1-9baf-fa44f2a83203";
+      fsType = "ext4";
+    };
+  };
+
   # services
   services.logind = {
     settings = {
@@ -73,6 +81,7 @@
     };
   };
 
+  immich.enable = true;
   keyd.enable = true;
   nh.enable = true;
   openssh.enable = true;
