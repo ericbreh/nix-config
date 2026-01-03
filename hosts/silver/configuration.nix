@@ -61,6 +61,13 @@
     };
   };
   services.tailscale.enable = true;
+  services.tlp = {
+    enable = true;
+    settings = {
+      STOP_CHARGE_THRESH_BAT0 = 55;
+      START_CHARGE_THRESH_BAT0 = 45;
+    };
+  };
 
   users.users.ericbreh = {
     isNormalUser = true;
