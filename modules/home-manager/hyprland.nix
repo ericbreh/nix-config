@@ -11,6 +11,7 @@
       wlogout
       wofi
       hyprlock
+      hyprsunset
       libnotify
       grim
       slurp
@@ -41,7 +42,6 @@
     };
     services.hyprpaper.enable = true;
     services.hypridle.enable = true;
-    services.hyprsunset.enable = true;
     services.mako.enable = true;
     services.swayosd.enable = true;
     services.cliphist = {

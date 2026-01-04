@@ -9,19 +9,23 @@
 
   home.packages = with pkgs; [
     nerd-fonts.meslo-lg
+    gemini-cli
+    nodejs_24
+    gh
+
     spotify
     bitwarden-desktop
     qbittorrent
     protonvpn-gui
     signal-desktop
-    gemini-cli
-    rustdesk-flutter
-    handbrake
-    losslesscut-bin
-    beekeeper-studio
-    nodejs_24
     zoom-us
     discord
+
+    rustdesk-flutter
+    beekeeper-studio
+
+    handbrake
+    losslesscut-bin
     rnote
     inkscape
   ];

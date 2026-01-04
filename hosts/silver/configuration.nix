@@ -13,9 +13,14 @@
   ];
 
   # boot
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      timeout = 1;
+      efi.canTouchEfiVariables = true;
+    };
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
   zramSwap.enable = true;
 
   # networking
