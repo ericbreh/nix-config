@@ -7,8 +7,10 @@
   home.homeDirectory = "/home/ericbreh";
   home.stateVersion = "25.05";
 
-  # home.packages = with pkgs; [
-  # ];
+  home.packages = with pkgs; [
+    speedtest-cli
+    iperf
+  ];
 
   home-manager.core.enable = true;
   home-manager.direnv.enable = true;

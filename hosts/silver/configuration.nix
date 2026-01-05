@@ -94,7 +94,10 @@
   };
 
   immich.enable = true;
+  jellyfin.enable = true;
   keyd.enable = true;
   nh.enable = true;
   openssh.enable = true;
+  samba.enable = true;
+  samba.username = "ericbreh";
 }

@@ -4,12 +4,14 @@
     ./greetd.nix
     ./hyprland.nix
     ./immich.nix
+    ./jellyfin.nix
     ./keyd.nix
     ./nh.nix
     ./niri.nix
     ./nix-ld.nix
     ./openssh.nix
     ./podman.nix
+    ./samba.nix
     ./steam.nix
   ];
 }

@@ -36,6 +36,9 @@
       texlab
 
       jq
+
+      gopls
+      gofumpt
     ];
 
     home.file.".config/nvim".source =
