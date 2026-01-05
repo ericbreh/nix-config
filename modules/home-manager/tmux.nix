@@ -4,11 +4,18 @@
   pkgs,
   ...
 }: {
-  options.home-manager.tmux.enable = lib.mkEnableOption "Enable tmux";
+  options.home-manager = {
+    tmux.enable = lib.mkEnableOption "Enable tmux";
+    tmux.prefix = lib.mkOption {
+      type = lib.types.str;
+      default = "a";
+      description = "tmux prefix";
+    };
+  };
+
   config = lib.mkIf config.home-manager.tmux.enable {
     programs.tmux = {
       enable = true;
-      shortcut = "a";
       baseIndex = 1;
       escapeTime = 10;
       keyMode = "vi";
@@ -17,6 +24,10 @@
       terminal = "tmux-256color";
       customPaneNavigationAndResize = true;
       extraConfig = ''
+        unbind C-b
+        set -g prefix C-${config.home-manager.tmux.prefix}
+        bind C-${config.home-manager.tmux.prefix} send-prefix
+
         set -g renumber-windows on
         set -g focus-events on
         set -s set-clipboard off

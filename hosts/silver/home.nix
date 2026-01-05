@@ -16,6 +16,7 @@
   home-manager.lazygit.enable = true;
   home-manager.nvim.enable = true;
   home-manager.tmux.enable = true;
+  home-manager.tmux.prefix = "b";
   home-manager.zsh.enable = true;
 
   programs.home-manager.enable = true;

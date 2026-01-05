@@ -20,6 +20,7 @@
     signal-desktop
     zoom-us
     discord
+    wasistlos
 
     rustdesk-flutter
     beekeeper-studio
