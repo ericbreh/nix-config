@@ -25,8 +25,6 @@
     rustdesk-flutter
     beekeeper-studio
 
-    handbrake
-    losslesscut-bin
     rnote
     inkscape
   ];
@@ -37,9 +35,10 @@
   home-manager.firefox.enable = true;
   home-manager.git.enable = true;
   home-manager.gnome.enable = false;
-  home-manager.hyprland.enable = true;
+  home-manager.hyprland.enable = false;
   home-manager.kitty.enable = true;
   home-manager.lazygit.enable = true;
+  home-manager.niri.enable = true;
   home-manager.nvim.enable = true;
   home-manager.pandoc.enable = true;
   home-manager.texlive.enable = true;

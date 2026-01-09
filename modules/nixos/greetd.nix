@@ -10,7 +10,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet -r --cmd 'uwsm start hyprland-uwsm.desktop'";
+          command = "${pkgs.tuigreet}/bin/tuigreet -r";
         };
       };
     };

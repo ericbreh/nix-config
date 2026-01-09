@@ -75,12 +75,13 @@
   };
 
   # services
-  services.fprintd.enable = true;
+  services.fprintd.enable = false;
   services.power-profiles-daemon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
   services.printing.enable = true;
   services.tailscale.enable = true;
+  services.thermald.enable = true;
 
   users.users.ericbreh = {
     isNormalUser = true;
@@ -100,10 +101,10 @@
 
   gnome.enable = false;
   greetd.enable = true;
-  hyprland.enable = true;
+  hyprland.enable = false;
   keyd.enable = true;
   nh.enable = true;
-  niri.enable = false;
+  niri.enable = true;
   nix-ld.enable = false;
   podman.enable = true;
   steam.enable = true;

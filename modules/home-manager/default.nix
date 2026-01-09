@@ -9,6 +9,7 @@
     ./hyprland.nix
     ./kitty.nix
     ./lazygit.nix
+    ./niri.nix
     ./nvim.nix
     ./pandoc.nix
     ./texlive.nix

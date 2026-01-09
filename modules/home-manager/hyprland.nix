@@ -25,8 +25,8 @@
       seahorse
       nautilus
       loupe
-      papers
       showtime
+      papers
       gnome-disk-utility
       baobab
       snapshot
