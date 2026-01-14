@@ -50,6 +50,12 @@
     "/srv/storage" = {
       device = "/dev/disk/by-uuid/daf86907-e811-4bd1-9baf-fa44f2a83203";
       fsType = "ext4";
+      options = ["noatime"];
+    };
+    "/srv/backup" = {
+      device = "/dev/disk/by-uuid/ae6a911d-ccbf-48fc-a54f-2ba26a036269";
+      fsType = "ext4";
+      options = ["nofail" "noatime"];
     };
   };
 
@@ -98,6 +104,7 @@
   keyd.enable = true;
   nh.enable = true;
   openssh.enable = true;
+  restic.enable = true;
   samba.enable = true;
   samba.username = "ericbreh";
 }

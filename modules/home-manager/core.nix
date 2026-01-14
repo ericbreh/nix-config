@@ -16,9 +16,11 @@
       wl-clipboard
       uv
       tree
-      ncdu
+      gdu
       fastfetch
       btop
+      usbutils
+      yazi
     ];
   };
 }

@@ -39,6 +39,7 @@ in {
         lta = "lt -a";
         cd = "zd";
         rebuild-nix = "${rebuild-nix}";
+        myrsync = "rsync -ah --partial --info=progress2,stats2";
       };
 
       initContent = ''

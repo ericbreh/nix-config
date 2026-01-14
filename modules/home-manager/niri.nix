@@ -11,6 +11,7 @@
       nautilus
       loupe
       showtime
+      decibels
       papers
       gnome-disk-utility
       baobab

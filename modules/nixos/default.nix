@@ -11,6 +11,7 @@
     ./nix-ld.nix
     ./openssh.nix
     ./podman.nix
+    ./restic.nix
     ./samba.nix
     ./steam.nix
   ];
