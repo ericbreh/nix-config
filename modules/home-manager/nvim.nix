@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.home-manager.nvim.enable = lib.mkEnableOption "Enable nvim";
-  config = lib.mkIf config.home-manager.nvim.enable {
+  options.nvim.enable = lib.mkEnableOption "Enable nvim";
+  config = lib.mkIf config.nvim.enable {
     programs.neovim = {
       enable = true;
       defaultEditor = true;

@@ -10,9 +10,12 @@
   home.packages = with pkgs; [
     nerd-fonts.meslo-lg
     gemini-cli
+    opencode
     nodejs_24
     gh
+    distrobox
 
+    firefox
     spotify
     bitwarden-desktop
     qbittorrent
@@ -20,7 +23,9 @@
     signal-desktop
     zoom-us
     discord
+    vscode
     wasistlos
+    jellyfin-media-player
 
     rustdesk-flutter
     beekeeper-studio
@@ -29,23 +34,18 @@
     inkscape
   ];
 
-  home-manager.core.enable = true;
-  home-manager.direnv.enable = true;
-  home-manager.distrobox.enable = true;
-  home-manager.firefox.enable = true;
-  home-manager.git.enable = true;
-  home-manager.gnome.enable = false;
-  home-manager.hyprland.enable = false;
-  home-manager.kitty.enable = true;
-  home-manager.lazygit.enable = true;
-  home-manager.niri.enable = true;
-  home-manager.nvim.enable = true;
-  home-manager.pandoc.enable = true;
-  home-manager.texlive.enable = true;
-  home-manager.theme.enable = true;
-  home-manager.tmux.enable = true;
-  home-manager.vscode.enable = true;
-  home-manager.zsh.enable = true;
+  core.enable = true;
+  direnv.enable = true;
+  git.enable = true;
+  hyprland.enable = false;
+  kitty.enable = true;
+  lazygit.enable = true;
+  niri.enable = true;
+  nvim.enable = true;
+  latex.enable = true;
+  theme.enable = true;
+  tmux.enable = true;
+  zsh.enable = true;
 
   programs.home-manager.enable = true;
 }

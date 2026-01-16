@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.home-manager.niri.enable = lib.mkEnableOption "Enable niri";
-  config = lib.mkIf config.home-manager.niri.enable {
+  options.niri.enable = lib.mkEnableOption "Enable niri";
+  config = lib.mkIf config.niri.enable {
     home.packages = with pkgs; [
       seahorse
       nautilus

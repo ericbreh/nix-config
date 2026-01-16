@@ -1,11 +1,10 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }: {
-  options.home-manager.kitty.enable = lib.mkEnableOption "Enable kitty";
-  config = lib.mkIf config.home-manager.kitty.enable {
+  options.kitty.enable = lib.mkEnableOption "Enable kitty";
+  config = lib.mkIf config.kitty.enable {
     programs.kitty = {
       enable = true;
       font = {

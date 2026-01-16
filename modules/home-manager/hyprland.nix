@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: {
-  options.home-manager.hyprland.enable =
+  options.hyprland.enable =
     lib.mkEnableOption "Enable hyprland";
-  config = lib.mkIf config.home-manager.hyprland.enable {
+  config = lib.mkIf config.hyprland.enable {
     home.packages = with pkgs; [
       wlogout
       wofi

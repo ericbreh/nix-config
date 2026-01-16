@@ -20,8 +20,8 @@
       settings = {
         global = {
           "workgroup" = "WORKGROUP";
-          "server string" = "silver";
-          "netbios name" = "silver";
+          "server string" = config.networking.hostName;
+          "netbios name" = config.networking.hostName;
           "security" = "user";
           "hosts allow" = "192.168.0.0/16 127.0.0.1 100.64.0.0/10 localhost";
           "hosts deny" = "0.0.0.0/0";
