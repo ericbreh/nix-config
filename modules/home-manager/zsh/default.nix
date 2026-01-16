@@ -18,8 +18,8 @@
     popd >/dev/null
   '';
 in {
-  options.home-manager.zsh.enable = lib.mkEnableOption "Enable zsh";
-  config = lib.mkIf config.home-manager.zsh.enable {
+  options.zsh.enable = lib.mkEnableOption "Enable zsh";
+  config = lib.mkIf config.zsh.enable {
     programs.zsh = {
       enable = true;
       oh-my-zsh.enable = true;

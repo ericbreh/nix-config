@@ -8,18 +8,17 @@
   home.stateVersion = "25.05";
 
   home.packages = with pkgs; [
-    speedtest-cli
     iperf
   ];
 
-  home-manager.core.enable = true;
-  home-manager.direnv.enable = true;
-  home-manager.git.enable = true;
-  home-manager.lazygit.enable = true;
-  home-manager.nvim.enable = true;
-  home-manager.tmux.enable = true;
-  home-manager.tmux.prefix = "b";
-  home-manager.zsh.enable = true;
+  core.enable = true;
+  direnv.enable = true;
+  git.enable = true;
+  lazygit.enable = true;
+  nvim.enable = true;
+  tmux.enable = true;
+  tmux.prefix = "b";
+  zsh.enable = true;
 
   programs.home-manager.enable = true;
 }

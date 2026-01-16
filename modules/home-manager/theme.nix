@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.home-manager.theme.enable = lib.mkEnableOption "Enable theme";
-  config = lib.mkIf config.home-manager.theme.enable {
+  options.theme.enable = lib.mkEnableOption "Enable theme";
+  config = lib.mkIf config.theme.enable {
     gtk = {
       enable = true;
       theme = {

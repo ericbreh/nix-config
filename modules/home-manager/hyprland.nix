@@ -4,41 +4,30 @@
   pkgs,
   ...
 }: {
-  options.home-manager.hyprland.enable =
-    lib.mkEnableOption "Enable hyprland";
-  config = lib.mkIf config.home-manager.hyprland.enable {
+  options.hyprland.enable = lib.mkEnableOption "Enable hyprland";
+  config = lib.mkIf config.hyprland.enable {
     home.packages = with pkgs; [
-      wlogout
-      wofi
       hyprlock
       hyprsunset
-      libnotify
+
+      wofi
+      wlogout
+
       grim
       slurp
       wf-recorder
+
       brightnessctl
+      ddcutil
       bluetuith
+      libnotify
       networkmanagerapplet
-
-      phinger-cursors
-
-      seahorse
-      nautilus
-      loupe
-      showtime
-      papers
-      gnome-disk-utility
-      baobab
-      snapshot
-      gnome-control-center
     ];
 
     services.polkit-gnome.enable = true;
     programs.waybar = {
       enable = true;
-      systemd = {
-        enable = true;
-      };
+      systemd.enable = true;
     };
     services.hyprpaper.enable = true;
     services.hypridle.enable = true;

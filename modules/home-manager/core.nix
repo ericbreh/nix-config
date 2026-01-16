@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.home-manager.core.enable = lib.mkEnableOption "Enable core";
-  config = lib.mkIf config.home-manager.core.enable {
+  options.core.enable = lib.mkEnableOption "Enable core";
+  config = lib.mkIf config.core.enable {
     home.packages = with pkgs; [
       unzip
       zip
@@ -21,6 +21,8 @@
       btop
       usbutils
       yazi
+      mgitstatus
+      speedtest-go
     ];
   };
 }

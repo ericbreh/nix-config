@@ -6,15 +6,9 @@
   # nix
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config = {
-    permittedInsecurePackages = [
-      "beekeeper-studio-5.3.4"
-    ];
-  };
   system.stateVersion = "25.05";
   imports = [
     ./hardware-configuration.nix
-    ./../../modules/nixos
   ];
 
   # boot
@@ -108,4 +102,12 @@
   nix-ld.enable = false;
   podman.enable = true;
   steam.enable = true;
+
+  # services.eko-messenger = {
+  #   enable = true;
+  #   domain = "http://127.0.0.1:3000";
+  #   jwtSecret = "";
+  #   authProvider = "firebase";
+  #   firebaseServiceAccount = "/var/lib/eko-messenger/firebase.json";
+  # };
 }

@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  options.home-manager.lazygit.enable = lib.mkEnableOption "Enable lazygit";
-  config = lib.mkIf config.home-manager.lazygit.enable {
+  options.lazygit.enable = lib.mkEnableOption "Enable lazygit";
+  config = lib.mkIf config.lazygit.enable {
     home.packages = with pkgs; [
       delta
     ];

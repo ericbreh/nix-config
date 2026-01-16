@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  options.home-manager = {
+  options = {
     tmux.enable = lib.mkEnableOption "Enable tmux";
     tmux.prefix = lib.mkOption {
       type = lib.types.str;
@@ -13,7 +13,7 @@
     };
   };
 
-  config = lib.mkIf config.home-manager.tmux.enable {
+  config = lib.mkIf config.tmux.enable {
     programs.tmux = {
       enable = true;
       baseIndex = 1;
@@ -25,8 +25,8 @@
       customPaneNavigationAndResize = true;
       extraConfig = ''
         unbind C-b
-        set -g prefix C-${config.home-manager.tmux.prefix}
-        bind C-${config.home-manager.tmux.prefix} send-prefix
+        set -g prefix C-${config.tmux.prefix}
+        bind C-${config.tmux.prefix} send-prefix
 
         set -g renumber-windows on
         set -g focus-events on
@@ -59,8 +59,5 @@
         bind -r a last-window
       '';
     };
-    home.packages = with pkgs; [
-      wl-clipboard
-    ];
   };
 }

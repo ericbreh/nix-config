@@ -1,21 +1,18 @@
 {...}: {
   imports = [
+    ./cli.nix
     ./core.nix
     ./direnv.nix
-    ./distrobox.nix
-    ./firefox.nix
     ./git.nix
-    ./gnome.nix
+    ./gui.nix
     ./hyprland.nix
     ./kitty.nix
+    ./latex.nix
     ./lazygit.nix
     ./niri.nix
     ./nvim.nix
-    ./pandoc.nix
-    ./texlive.nix
     ./theme.nix
     ./tmux.nix
-    ./vscode.nix
     ./zsh
   ];
 }
