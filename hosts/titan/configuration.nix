@@ -80,7 +80,7 @@
   users.users.ericbreh = {
     isNormalUser = true;
     description = "Eric Chuang";
-    extraGroups = ["networkmanager" "wheel" "i2c"];
+    extraGroups = ["networkmanager" "wheel" "i2c" "dialout"];
     shell = pkgs.zsh;
   };
   programs.zsh.enable = true;
@@ -102,12 +102,4 @@
   nix-ld.enable = false;
   podman.enable = true;
   steam.enable = true;
-
-  # services.eko-messenger = {
-  #   enable = true;
-  #   domain = "http://127.0.0.1:3000";
-  #   jwtSecret = "";
-  #   authProvider = "firebase";
-  #   firebaseServiceAccount = "/var/lib/eko-messenger/firebase.json";
-  # };
 }

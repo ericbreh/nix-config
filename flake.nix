@@ -8,7 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    # eko-messenger.url = "path:/home/ericbreh/Github/eko-messenger";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {nixpkgs, ...} @ inputs: {
@@ -20,7 +23,6 @@
           ./modules/nixos
           inputs.home-manager.nixosModules.default
           inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
-          # inputs.eko-messenger.nixosModules.default
         ];
       };
       silver = nixpkgs.lib.nixosSystem {
