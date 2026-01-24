@@ -79,6 +79,18 @@
     };
   };
 
+  security.sudo.extraRules = [
+    {
+      users = ["ericbreh"];
+      commands = [
+        {
+          command = "ALL";
+          options = ["NOPASSWD"];
+        }
+      ];
+    }
+  ];
+
   users.users.ericbreh = {
     isNormalUser = true;
     description = "Eric Chuang";
