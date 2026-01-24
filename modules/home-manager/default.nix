@@ -3,6 +3,7 @@
     ./cli.nix
     ./core.nix
     ./direnv.nix
+    ./eko-messenger-client.nix
     ./git.nix
     ./gui.nix
     ./hyprland.nix

@@ -13,7 +13,7 @@
       discord
       signal-desktop
       teams-for-linux
-      wasistlos
+      karere
       zoom-us
 
       spotify

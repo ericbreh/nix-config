@@ -4,7 +4,15 @@
   ...
 }: {
   # nix
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    extra-substituters = [
+      "https://eko-network.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "eko-network.cachix.org-1:1xHfovoNlydsTCzXxr5AstUoJUmGR/tRq0PQSCyPab8="
+    ];
+  };
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "25.05";
   imports = [
