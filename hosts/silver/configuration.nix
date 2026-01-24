@@ -118,4 +118,5 @@
   restic.enable = true;
   samba.enable = true;
   samba.username = "ericbreh";
+  smart.enable = true;
 }

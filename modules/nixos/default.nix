@@ -13,6 +13,7 @@
     ./podman.nix
     ./restic.nix
     ./samba.nix
+    ./smart.nix
     ./steam.nix
   ];
 }
