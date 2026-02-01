@@ -19,6 +19,7 @@
   lazygit.enable = true;
   niri.enable = true;
   nvim.enable = true;
+  noctalia.enable = true;
   theme.enable = true;
   tmux.enable = true;
   zsh.enable = true;

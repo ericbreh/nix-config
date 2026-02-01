@@ -11,6 +11,7 @@
     ./latex.nix
     ./lazygit.nix
     ./niri.nix
+    ./noctalia.nix
     ./nvim.nix
     ./theme.nix
     ./tmux.nix
