@@ -13,6 +13,7 @@
       nodejs_24
       gh
       distrobox
+      quickemu
     ];
     programs.opencode = {
       enable = true;

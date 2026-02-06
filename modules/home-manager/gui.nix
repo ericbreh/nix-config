@@ -18,12 +18,12 @@
 
       spotify
       jellyfin-media-player
+      feishin
 
       vscode
       rnote
       inkscape
 
-      bitwarden-desktop
       qbittorrent
       protonvpn-gui
       rustdesk-flutter

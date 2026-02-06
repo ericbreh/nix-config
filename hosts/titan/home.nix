@@ -10,7 +10,7 @@
   cli.enable = true;
   core.enable = true;
   direnv.enable = true;
-  eko-messenger-client.enable = true;
+  eko-messenger-client.enable = false;
   git.enable = true;
   gui.enable = true;
   hyprland.enable = false;
