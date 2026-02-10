@@ -12,8 +12,7 @@
 
       discord
       signal-desktop
-      teams-for-linux
-      karere
+      altus
       zoom-us
 
       spotify

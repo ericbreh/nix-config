@@ -12,7 +12,6 @@
   ];
 
   core.enable = true;
-  direnv.enable = true;
   git.enable = true;
   lazygit.enable = true;
   nvim.enable = true;

@@ -116,7 +116,7 @@
   nh.enable = true;
   openssh.enable = true;
   restic.enable = true;
-  samba.enable = true;
+  samba.enable = false;
   samba.username = "ericbreh";
   smart.enable = true;
 }

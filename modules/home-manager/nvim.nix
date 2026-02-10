@@ -14,6 +14,8 @@
     };
 
     home.packages = with pkgs; [
+      tree-sitter
+
       clang
 
       lua-language-server
@@ -34,11 +36,16 @@
       markdownlint-cli
 
       texlab
+      ltex-ls-plus
 
       jq
 
       gopls
       gofumpt
+
+      sql-formatter
+
+      ghostscript
     ];
 
     home.file.".config/nvim".source =
