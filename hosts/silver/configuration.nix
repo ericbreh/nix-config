@@ -118,5 +118,8 @@
   restic.enable = true;
   samba.enable = false;
   samba.username = "ericbreh";
+  syncthing.enable = true;
+  syncthing.dataDir = "/srv/storage/syncthing";
+  syncthing.type = "receiveonly";
   smart.enable = true;
 }

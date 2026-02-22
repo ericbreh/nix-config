@@ -109,5 +109,7 @@
   niri.enable = true;
   nix-ld.enable = false;
   podman.enable = true;
+  syncthing.enable = true;
+  syncthing.type = "sendonly";
   steam.enable = true;
 }

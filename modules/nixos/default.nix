@@ -15,5 +15,6 @@
     ./samba.nix
     ./smart.nix
     ./steam.nix
+    ./syncthing.nix
   ];
 }
