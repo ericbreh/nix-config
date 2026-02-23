@@ -116,8 +116,7 @@
   nh.enable = true;
   openssh.enable = true;
   restic.enable = true;
-  samba.enable = false;
-  samba.username = "ericbreh";
+  samba.enable = true;
   syncthing.enable = true;
   syncthing.dataDir = "/srv/storage/syncthing";
   syncthing.type = "receiveonly";

@@ -5,12 +5,6 @@
 }: {
   options.samba = {
     enable = lib.mkEnableOption "Enable samba";
-
-    username = lib.mkOption {
-      type = lib.types.str;
-      default = null;
-      description = "samba username";
-    };
   };
 
   config = lib.mkIf config.samba.enable {
@@ -28,39 +22,22 @@
           "guest account" = "nobody";
           "map to guest" = "bad user";
         };
-        "public" = {
-          "path" = "/srv/storage/share/public";
-          "browseable" = "yes";
-          "read only" = "no";
-          "guest ok" = "yes";
-          "create mask" = "0644";
-          "directory mask" = "0755";
-          "force user" = "nobody";
-          "force group" = "nogroup";
-        };
-        "private" = {
-          "path" = "/srv/storage/share/private";
+        "syncthing" = {
+          "path" = "/srv/storage/syncthing";
           "browseable" = "yes";
           "read only" = "no";
           "guest ok" = "no";
           "create mask" = "0644";
           "directory mask" = "0755";
-          "valid users" = config.samba.username;
-          "force user" = config.samba.username;
+          "valid users" = "ericbreh";
+          "force user" = "ericbreh";
           "force group" = "users";
         };
       };
     };
 
-    services.samba-wsdd = {
-      enable = true;
-      openFirewall = true;
-    };
-
     systemd.tmpfiles.rules = [
-      "d /srv/storage/share 0755 ${config.samba.username} users - -"
-      "d /srv/storage/share/private 0775 ${config.samba.username} users - -"
-      "d /srv/storage/share/public 0775 nobody nogroup - -"
+      "d /srv/storage/syncthing 0775 ericbreh users - -"
     ];
   };
 }
