@@ -2,16 +2,14 @@
   lib,
   config,
   ...
-}: {
+}: let
+  hostName = config.networking.hostName;
+in {
   options.syncthing = {
     enable = lib.mkEnableOption "Enable syncthing";
     dataDir = lib.mkOption {
       type = lib.types.path;
       default = "/home/ericbreh";
-    };
-    type = lib.mkOption {
-      type = lib.types.str;
-      default = "sendreceive";
     };
   };
 
@@ -42,7 +40,10 @@
               "silver"
             ];
             ignorePatterns = ["Screenshots"];
-            type = config.syncthing.type;
+            type =
+              if hostName == "titan"
+              then "sendonly"
+              else "receiveonly";
           };
           "Documents" = {
             path = "${config.syncthing.dataDir}/Documents";
@@ -50,7 +51,18 @@
               "titan"
               "silver"
             ];
-            type = config.syncthing.type;
+            type =
+              if hostName == "titan"
+              then "sendonly"
+              else "receiveonly";
+          };
+          "notes" = {
+            path = "${config.syncthing.dataDir}/notes";
+            devices = [
+              "titan"
+              "silver"
+            ];
+            type = "sendreceive";
           };
         };
       };

@@ -22,10 +22,10 @@
       vscode
       rnote
       inkscape
+      obsidian
 
       qbittorrent
       protonvpn-gui
-      rustdesk-flutter
       prismlauncher
 
       nautilus

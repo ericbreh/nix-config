@@ -119,6 +119,5 @@
   samba.enable = true;
   syncthing.enable = true;
   syncthing.dataDir = "/srv/storage/syncthing";
-  syncthing.type = "receiveonly";
   smart.enable = true;
 }
