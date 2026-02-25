@@ -63,6 +63,9 @@ in {
               "silver"
             ];
             type = "sendreceive";
+            fsWatcherEnabled = true;
+            fsWatcherDelayS = 1;
+            rescanIntervalS = 300;
           };
         };
       };

@@ -16,5 +16,6 @@
     ./smart.nix
     ./steam.nix
     ./syncthing.nix
+    ./webdav.nix
   ];
 }

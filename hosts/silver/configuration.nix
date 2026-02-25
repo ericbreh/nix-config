@@ -120,4 +120,5 @@
   syncthing.enable = true;
   syncthing.dataDir = "/srv/storage/syncthing";
   smart.enable = true;
+  webdav.enable = true;
 }
