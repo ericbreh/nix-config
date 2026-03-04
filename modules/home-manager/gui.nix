@@ -15,7 +15,6 @@
       altus
       zoom-us
 
-      spotify
       jellyfin-media-player
       feishin
 
