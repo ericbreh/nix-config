@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ./cli.nix
+    ./comma.nix
     ./core.nix
     ./direnv.nix
     ./eko-messenger-client.nix

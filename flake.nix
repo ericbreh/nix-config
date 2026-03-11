@@ -18,6 +18,11 @@
     eko-messenger-client = {
       url = "github:eko-network/eko-messenger-client";
     };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {nixpkgs, ...} @ inputs: {

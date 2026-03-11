@@ -8,6 +8,7 @@
   home.stateVersion = "25.05";
 
   cli.enable = true;
+  comma.enable = true;
   core.enable = true;
   direnv.enable = true;
   eko-messenger-client.enable = false;
