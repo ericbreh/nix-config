@@ -25,7 +25,7 @@
     };
   };
 
-  outputs = {nixpkgs, ...} @ inputs: {
+  outputs = inputs @ {nixpkgs, ...}: {
     nixosConfigurations = {
       titan = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
