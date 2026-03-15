@@ -15,8 +15,9 @@
 
     home.packages = with pkgs; [
       tree-sitter
+      ghostscript
 
-      clang
+      clang-tools
 
       lua-language-server
       stylua
@@ -38,14 +39,12 @@
       texlab
       ltex-ls-plus
 
-      jq
-
       gopls
       gofumpt
 
-      sql-formatter
+      jq
 
-      ghostscript
+      sql-formatter
     ];
 
     programs.pandoc = {

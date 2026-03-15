@@ -6,6 +6,10 @@
 }: {
   options.theme.enable = lib.mkEnableOption "Enable theme";
   config = lib.mkIf config.theme.enable {
+    home.packages = with pkgs; [
+      nerd-fonts.meslo-lg
+    ];
+
     gtk = {
       enable = true;
       theme = {

@@ -14,7 +14,6 @@
       ripgrep
       fd
       wl-clipboard
-      uv
       tree
       gdu
       fastfetch
@@ -22,7 +21,6 @@
       usbutils
       yazi
       mgitstatus
-      speedtest-go
     ];
   };
 }
