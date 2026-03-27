@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -25,25 +27,12 @@
     };
   };
 
-  outputs = inputs @ {nixpkgs, ...}: {
-    nixosConfigurations = {
-      titan = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./hosts/titan/configuration.nix
-          ./modules/nixos
-          inputs.home-manager.nixosModules.default
-          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
-        ];
-      };
-      silver = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./hosts/silver/configuration.nix
-          ./modules/nixos
-          inputs.home-manager.nixosModules.default
-        ];
-      };
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        inputs.flake-parts.flakeModules.modules
+        (inputs.import-tree ./modules)
+      ];
+      systems = ["x86_64-linux"];
     };
-  };
 }

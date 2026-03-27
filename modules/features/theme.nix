@@ -1,0 +1,48 @@
+{inputs, ...}: {
+  flake.modules.nixos.theme = {
+    home-manager.sharedModules = [inputs.self.modules.homeManager.theme];
+  };
+
+  flake.modules.homeManager.theme = {pkgs, ...}: {
+    home.packages = with pkgs; [
+      nerd-fonts.meslo-lg
+    ];
+
+    gtk = {
+      enable = true;
+      theme = {
+        name = "Adwaita-dark";
+        package = pkgs.gnome-themes-extra;
+      };
+      iconTheme = {
+        name = "Adwaita";
+        package = pkgs.adwaita-icon-theme;
+      };
+
+      gtk3.extraConfig = {
+        gtk-application-prefer-dark-theme = 1;
+      };
+    };
+
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+    };
+
+    qt = {
+      enable = true;
+      platformTheme.name = "gtk";
+      style.name = "adwaita-dark";
+    };
+
+    home.pointerCursor = {
+      name = "phinger-cursors-dark";
+      package = pkgs.phinger-cursors;
+      size = 24;
+      gtk.enable = true;
+      x11.enable = true;
+      hyprcursor.enable = true;
+    };
+  };
+}

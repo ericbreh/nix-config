@@ -1,0 +1,26 @@
+{...}: {
+  flake.modules.nixos.keyd = {
+    services.keyd = {
+      enable = true;
+      keyboards."builtin" = {
+        ids = ["0001:0001"];
+        settings = {
+          main = {
+            capslock = "overload(control, esc)";
+            leftalt = "leftmeta";
+            leftmeta = "leftalt";
+            rightcontrol = "capslock";
+            space = "overload(nav, space)";
+            apostrophe = "overload(control, apostrophe)";
+          };
+          nav = {
+            h = "left";
+            j = "down";
+            k = "up";
+            l = "right";
+          };
+        };
+      };
+    };
+  };
+}
