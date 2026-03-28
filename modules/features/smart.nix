@@ -1,7 +1,5 @@
 {...}: {
   flake.modules.nixos.smart = {pkgs, ...}: {
-    environment.systemPackages = [pkgs.smartmontools];
-
     systemd.services."smart-check" = {
       description = "Check SMART health of drives";
       path = [pkgs.smartmontools pkgs.coreutils pkgs.curl pkgs.util-linux pkgs.gnugrep];

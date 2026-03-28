@@ -11,7 +11,6 @@
       curl
       ripgrep
       fd
-      wl-clipboard
       tree
       gdu
       fastfetch

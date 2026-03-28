@@ -11,6 +11,7 @@
       quickemu
       uv
       clang
+      wl-clipboard
     ];
     programs.opencode = {
       enable = true;

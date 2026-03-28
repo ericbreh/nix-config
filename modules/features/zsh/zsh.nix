@@ -8,13 +8,9 @@
       #!/usr/bin/env bash
       set -euo pipefail
       pushd "$HOME/nix-config" > /dev/null
-      alejandra . > /dev/null 2>&1
+      ${pkgs.alejandra}/bin/alejandra . > /dev/null 2>&1
       git add .
-      if grep -q '^ID=nixos$' /etc/os-release; then
-          nh os switch .
-      else
-          nh home switch .
-      fi
+      nh os switch .
       popd >/dev/null
     '';
   in {
@@ -23,9 +19,6 @@
       oh-my-zsh.enable = true;
       syntaxHighlighting.enable = true;
       autosuggestion.enable = true;
-      envExtra = ''
-        export ZSH_DISABLE_COMPFIX="true"
-      '';
 
       shellAliases = {
         rcat = "command cat";
@@ -62,19 +55,6 @@
 
         open() {
           nohup xdg-open "$@" >/dev/null 2>&1 &
-        }
-
-        copy() {
-          if [ -z "$1" ]; then
-            echo "Usage: copy <filename>"
-            return 1
-          fi
-          if [ ! -r "$1" ]; then
-            echo "Error: '$1' not found or not readable."
-            return 1
-          fi
-          wl-copy < "$1"
-          echo "Contents of '$1' copied to clipboard."
         }
       '';
     };

@@ -50,6 +50,8 @@
         bind C new-session
         bind -r n if-shell '[ "$(tmux list-windows | wc -l)" -eq 1 ]' 'new-window -c "#{pane_current_path}"' 'next-window'
         bind -r N if-shell '[ "$(tmux list-sessions | wc -l)" -eq 1 ]' 'new-session' 'switch-client -n'
+        bind -r p previous-window
+        bind -r P if-shell '[ "$(tmux list-sessions | wc -l)" -gt 1 ]' 'switch-client -p'
 
         bind-key g run-shell 'tmux display-popup -w 90% -h 90% -E "cd #{pane_current_path} && lazygit"'
 

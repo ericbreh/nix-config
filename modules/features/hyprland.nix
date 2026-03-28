@@ -31,7 +31,6 @@
       ddcutil
       bluetuith
       libnotify
-      networkmanagerapplet
     ];
 
     services.polkit-gnome.enable = true;

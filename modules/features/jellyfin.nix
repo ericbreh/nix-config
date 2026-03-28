@@ -1,13 +1,8 @@
 {...}: {
-  flake.modules.nixos.jellyfin = {pkgs, ...}: {
+  flake.modules.nixos.jellyfin = {
     services.jellyfin = {
       enable = true;
       openFirewall = true;
     };
-    environment.systemPackages = [
-      pkgs.jellyfin
-      pkgs.jellyfin-web
-      pkgs.jellyfin-ffmpeg
-    ];
   };
 }

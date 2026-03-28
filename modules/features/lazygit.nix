@@ -4,21 +4,19 @@
   };
 
   flake.modules.homeManager.lazygit = {pkgs, ...}: {
-    home.packages = with pkgs; [
-      delta
-    ];
     programs.lazygit = {
       enable = true;
       settings = {
         git = {
+          ignoreWhitespaceInDiffView = true;
           pagers = [
-            {pager = "delta --dark --paging=never";}
-            {
-              pager = "ydiff -p cat -s --wrap --width={{columnWidth}}";
-              colorArg = "never";
-            }
+            {pager = "${pkgs.delta}/bin/delta --dark --paging=never --side-by-side --line-numbers-left-format '{nm:2}' --line-numbers-right-format '{np:2}' --hunk-header-style syntax";}
+            {pager = "${pkgs.delta}/bin/delta --dark --paging=never --hunk-header-style syntax";}
           ];
-          diff = "difft --color=always";
+        };
+        gui = {
+          sidePanelWidth = 0.2;
+          expandFocusedSidePanel = true;
         };
       };
     };
