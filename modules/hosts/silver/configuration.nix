@@ -6,21 +6,21 @@
   }: {
     imports = with inputs.self.modules.nixos; [
       base
+      core
+      git
       immich
       jellyfin
       keyd
+      lazygit
       nh
+      nvim
       openssh
       restic
       samba
       smart
       syncthing
-      webdav
-      core
-      git
-      lazygit
-      nvim
       tmux
+      webdav
       zsh
     ];
 

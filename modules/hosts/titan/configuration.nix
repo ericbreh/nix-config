@@ -6,27 +6,28 @@
   }: {
     imports = with inputs.self.modules.nixos; [
       base
-      greetd
-      keyd
-      nh
-      niri
-      podman
-      steam
-      syncthing
       cli
       comma
       core
       direnv
       git
+      greetd
       gui
+      keyd
       kitty
       latex
       lazygit
+      nh
+      niri
       noctalia
       nvim
+      podman
+      steam
+      syncthing
       theme
       tmux
       zsh
+      zen-browser
     ];
 
     nix.settings = {
