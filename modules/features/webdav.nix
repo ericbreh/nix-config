@@ -1,8 +1,8 @@
 {...}: {
-  flake.modules.nixos.webdav = {
+  flake.modules.nixos.webdav = {config, ...}: {
     services.webdav = {
       enable = true;
-      user = "ericbreh";
+      user = config.mainUser;
       group = "users";
       environmentFile = "/etc/webdav-secret";
       settings = {

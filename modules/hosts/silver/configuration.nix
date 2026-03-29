@@ -1,5 +1,9 @@
 {inputs, ...}: {
-  flake.modules.nixos.silver = {pkgs, ...}: {
+  flake.modules.nixos.silver = {
+    pkgs,
+    config,
+    ...
+  }: {
     imports = with inputs.self.modules.nixos; [
       base
       immich
@@ -22,7 +26,7 @@
 
     networking.hostName = "silver";
 
-    users.users.ericbreh = {
+    users.users.${config.mainUser} = {
       isNormalUser = true;
       description = "Eric Chuang";
       extraGroups = ["networkmanager" "wheel"];
@@ -32,9 +36,8 @@
       ];
     };
 
-    home-manager.users."ericbreh" = {
-      home.username = "ericbreh";
-      home.homeDirectory = "/home/ericbreh";
+    home-manager.users.${config.mainUser} = {
+      home.homeDirectory = "/home/${config.mainUser}";
       home.stateVersion = "25.05";
       home.packages = with pkgs; [
         iperf
@@ -46,7 +49,7 @@
     time.timeZone = "America/Los_Angeles";
     security.sudo.extraRules = [
       {
-        users = ["ericbreh"];
+        users = [config.mainUser];
         commands = [
           {
             command = "ALL";

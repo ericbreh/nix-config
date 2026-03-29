@@ -1,26 +1,37 @@
 {...}: {
-  flake.modules.nixos.base = {pkgs, ...}: {
-    nix.settings.experimental-features = ["nix-command" "flakes"];
-    nix.extraOptions = "warn-dirty = false";
-    nixpkgs.config.allowUnfree = true;
-    system.stateVersion = "25.05";
-
-    boot = {
-      loader = {
-        systemd-boot.enable = true;
-        timeout = 1;
-        efi.canTouchEfiVariables = true;
-      };
-      kernelPackages = pkgs.linuxPackages_latest;
+  flake.modules.nixos.base = {
+    pkgs,
+    lib,
+    ...
+  }: {
+    options.mainUser = lib.mkOption {
+      type = lib.types.str;
+      default = "ericbreh";
     };
 
-    networking.networkmanager.enable = true;
-    systemd.services.NetworkManager-wait-online.enable = false;
+    config = {
+      nix.settings.experimental-features = ["nix-command" "flakes"];
+      nix.extraOptions = "warn-dirty = false";
+      nixpkgs.config.allowUnfree = true;
+      system.stateVersion = "25.05";
 
-    zramSwap.enable = true;
+      boot = {
+        loader = {
+          systemd-boot.enable = true;
+          timeout = 1;
+          efi.canTouchEfiVariables = true;
+        };
+        kernelPackages = pkgs.linuxPackages_latest;
+      };
 
-    i18n.defaultLocale = "en_US.UTF-8";
+      networking.networkmanager.enable = true;
+      systemd.services.NetworkManager-wait-online.enable = false;
 
-    programs.zsh.enable = true;
+      zramSwap.enable = true;
+
+      i18n.defaultLocale = "en_US.UTF-8";
+
+      programs.zsh.enable = true;
+    };
   };
 }

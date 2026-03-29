@@ -21,15 +21,15 @@
           "guest ok" = "no";
           "create mask" = "0644";
           "directory mask" = "0755";
-          "valid users" = "ericbreh";
-          "force user" = "ericbreh";
+          "valid users" = config.mainUser;
+          "force user" = config.mainUser;
           "force group" = "users";
         };
       };
     };
 
     systemd.tmpfiles.rules = [
-      "d /srv/storage/syncthing 0775 ericbreh users - -"
+      "d /srv/storage/syncthing 0775 ${config.mainUser} users - -"
     ];
   };
 }

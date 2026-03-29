@@ -1,5 +1,9 @@
 {inputs, ...}: {
-  flake.modules.nixos.titan = {pkgs, ...}: {
+  flake.modules.nixos.titan = {
+    pkgs,
+    config,
+    ...
+  }: {
     imports = with inputs.self.modules.nixos; [
       base
       greetd
@@ -36,16 +40,15 @@
 
     networking.hostName = "titan";
 
-    users.users.ericbreh = {
+    users.users.${config.mainUser} = {
       isNormalUser = true;
       description = "Eric Chuang";
       extraGroups = ["networkmanager" "wheel" "i2c" "dialout"];
       shell = pkgs.zsh;
     };
 
-    home-manager.users."ericbreh" = {
-      home.username = "ericbreh";
-      home.homeDirectory = "/home/ericbreh";
+    home-manager.users.${config.mainUser} = {
+      home.homeDirectory = "/home/${config.mainUser}";
       home.stateVersion = "25.05";
     };
 

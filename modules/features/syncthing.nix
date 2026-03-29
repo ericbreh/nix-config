@@ -8,15 +8,15 @@
   in {
     options.syncthing.dataDir = lib.mkOption {
       type = lib.types.path;
-      default = "/home/ericbreh";
+      default = "/home/${config.mainUser}";
     };
 
     config.services.syncthing = {
       enable = true;
-      user = "ericbreh";
+      user = config.mainUser;
       group = "users";
       dataDir = config.syncthing.dataDir;
-      configDir = "/home/ericbreh/.config/syncthing";
+      configDir = "/home/${config.mainUser}/.config/syncthing";
       openDefaultPorts = true;
 
       settings = {
