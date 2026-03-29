@@ -15,10 +15,18 @@
     services.upower.enable = true;
   };
 
-  flake.modules.homeManager.niri = {config, ...}: {
+  flake.modules.homeManager.niri = {
+    config,
+    pkgs,
+    ...
+  }: {
     home.file = {
       ".config/niri".source =
         config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/niri";
     };
+    home.packages = with pkgs; [
+      wl-clipboard
+      fd
+    ];
   };
 }

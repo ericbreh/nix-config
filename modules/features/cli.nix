@@ -5,19 +5,14 @@
 
   flake.modules.homeManager.cli = {pkgs, ...}: {
     home.packages = with pkgs; [
-      cursor-cli
-      gh
-      distrobox
-      quickemu
-      uv
-      clang
-      wl-clipboard
+      tree
+      gdu
+      fastfetch
+      btop
+      usbutils
+      yazi
+      mgitstatus
+      rsync
     ];
-    programs.opencode = {
-      enable = true;
-      settings = {
-        plugin = ["opencode-gemini-auth@latest"];
-      };
-    };
   };
 }

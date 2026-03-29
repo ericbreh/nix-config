@@ -47,6 +47,11 @@
       jq
 
       sql-formatter
+
+      fd
+      ripgrep
+      zip
+      unzip
     ];
 
     programs.pandoc = {

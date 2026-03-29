@@ -23,7 +23,6 @@
       shellAliases = {
         rcat = "command cat";
         cat = "bat";
-        icat = "kitty +kitten icat";
         ls = "eza --group-directories-first --icons=auto";
         la = "ls -A";
         lt = "eza --tree --level=2 --long --icons --git";

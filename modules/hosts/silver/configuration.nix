@@ -6,7 +6,7 @@
   }: {
     imports = with inputs.self.modules.nixos; [
       base
-      core
+      cli
       git
       immich
       jellyfin

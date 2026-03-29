@@ -8,7 +8,7 @@
       base
       cli
       comma
-      core
+      dev
       direnv
       git
       greetd
@@ -26,6 +26,7 @@
       syncthing
       theme
       tmux
+      virtualization
       zsh
       zen-browser
     ];
