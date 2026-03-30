@@ -22,7 +22,7 @@
       obsidian
 
       qbittorrent
-      protonvpn-gui
+      proton-vpn
       prismlauncher
 
       nautilus
