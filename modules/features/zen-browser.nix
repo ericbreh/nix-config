@@ -52,7 +52,7 @@
                   ];
                 }
               ];
-              definedAliases = ["@pkgs"];
+              definedAliases = ["@pkgs" "search"];
             };
             "Nix Options" = {
               urls = [
@@ -70,7 +70,7 @@
                   ];
                 }
               ];
-              definedAliases = ["@nop"];
+              definedAliases = ["@options"];
             };
             "Home Manager Options" = {
               urls = [
@@ -88,7 +88,7 @@
                   ];
                 }
               ];
-              definedAliases = ["@hmop"];
+              definedAliases = ["@home"];
             };
             "Google Maps" = {
               urls = [
