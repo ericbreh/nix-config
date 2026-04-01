@@ -26,6 +26,15 @@
         desc = "New vertical split";
       };
     }
+    {
+      key = "<C-w>t";
+      action = "<cmd>tabnew<CR>";
+      options = {
+        noremap = true;
+        silent = true;
+        desc = "Open new tab";
+      };
+    }
 
     {
       key = "<Esc>";

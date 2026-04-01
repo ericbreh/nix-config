@@ -35,6 +35,7 @@
       };
       image.enabled = true;
       git.enabled = true;
+      indent.enabled = true;
     };
   };
 

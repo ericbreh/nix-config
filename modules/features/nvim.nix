@@ -52,6 +52,7 @@
       ripgrep
       zip
       unzip
+      clang
     ];
 
     programs.pandoc = {
