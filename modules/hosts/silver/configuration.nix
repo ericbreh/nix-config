@@ -5,6 +5,7 @@
     ...
   }: {
     imports = with inputs.self.modules.nixos; [
+      agenix
       base
       cli
       git

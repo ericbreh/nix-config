@@ -1,5 +1,9 @@
 {...}: {
-  flake.modules.nixos.smart = {pkgs, ...}: {
+  flake.modules.nixos.smart = {
+    pkgs,
+    config,
+    ...
+  }: {
     systemd.services."smart-check" = {
       description = "Check SMART health of drives";
       path = [pkgs.smartmontools pkgs.coreutils pkgs.curl pkgs.util-linux pkgs.gnugrep];
@@ -9,7 +13,7 @@
       script = ''
         set -euo pipefail
 
-        HC_URL=$(cat /etc/healthchecks-smart)
+        HC_URL=$(cat ${config.age.secrets.healthchecks-smart.path})
 
         curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/start"
 

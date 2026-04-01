@@ -4,7 +4,7 @@
       enable = true;
       user = config.mainUser;
       group = "users";
-      environmentFile = "/etc/webdav-secret";
+      environmentFile = config.age.secrets.webdav.path;
       settings = {
         address = "0.0.0.0";
         port = 8080;

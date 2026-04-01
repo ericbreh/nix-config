@@ -1,9 +1,13 @@
 {...}: {
-  flake.modules.nixos.restic = {pkgs, ...}: {
+  flake.modules.nixos.restic = {
+    pkgs,
+    config,
+    ...
+  }: {
     services.restic.backups.primary = {
       repository = "/srv/backup/restic";
       paths = ["/srv/storage"];
-      passwordFile = "/etc/restic-secret";
+      passwordFile = config.age.secrets.restic.path;
       timerConfig = {
         OnCalendar = "03:00";
         Persistent = true;
@@ -15,7 +19,7 @@
         "--keep-monthly 6"
       ];
       backupPrepareCommand = ''
-        ${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null "$(cat /etc/healthchecks-restic)/start"
+        ${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null "$(cat ${config.age.secrets.healthchecks-restic.path})/start"
       '';
     };
 
@@ -27,14 +31,14 @@
       description = "Notify healthchecks.io of successful restic backup";
       serviceConfig = {
         Type = "oneshot";
-        ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null $(cat /etc/healthchecks-restic)'";
+        ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null $(cat ${config.age.secrets.healthchecks-restic.path})'";
       };
     };
     systemd.services."restic-notify-failure" = {
       description = "Notify healthchecks.io of failed restic backup";
       serviceConfig = {
         Type = "oneshot";
-        ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null $(cat /etc/healthchecks-restic)/fail'";
+        ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null $(cat ${config.age.secrets.healthchecks-restic.path})/fail'";
       };
     };
 
@@ -43,14 +47,14 @@
       path = [pkgs.restic pkgs.curl];
       environment = {
         RESTIC_REPOSITORY = "/srv/backup/restic";
-        RESTIC_PASSWORD_FILE = "/etc/restic-secret";
+        RESTIC_PASSWORD_FILE = config.age.secrets.restic.path;
       };
       serviceConfig = {
         Type = "oneshot";
       };
       script = ''
         set -euo pipefail
-        HC_URL=$(cat /etc/healthchecks-restic-check)
+        HC_URL=$(cat ${config.age.secrets.healthchecks-restic-check.path})
 
         curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/start"
 
