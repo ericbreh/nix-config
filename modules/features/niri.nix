@@ -20,9 +20,20 @@
     pkgs,
     ...
   }: {
+    imports = [
+      inputs.noctalia.homeModules.default
+    ];
+
+    programs.noctalia-shell = {
+      enable = true;
+      systemd.enable = true;
+    };
+
     home.file = {
       ".config/niri".source =
         config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/niri";
+      ".config/noctalia/".source =
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/noctalia";
     };
     home.packages = with pkgs; [
       wl-clipboard

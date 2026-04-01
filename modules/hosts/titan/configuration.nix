@@ -19,7 +19,6 @@
       lazygit
       nh
       niri
-      noctalia
       nvim
       podman
       steam
