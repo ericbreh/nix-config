@@ -30,9 +30,8 @@
       };
     };
 
-    eko-messenger-client = {
-      url = "github:eko-network/eko-messenger-client";
-    };
+    eko-messenger-client.url = "github:eko-network/eko-messenger-client";
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs = inputs:

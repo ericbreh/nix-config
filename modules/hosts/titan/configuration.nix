@@ -19,7 +19,7 @@
       lazygit
       nh
       niri
-      nvim
+      nixvim
       podman
       steam
       syncthing
