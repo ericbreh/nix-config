@@ -10,5 +10,6 @@
         plugin = ["opencode-gemini-auth@latest"];
       };
     };
+    home.sessionVariables.OPENCODE_EXPERIMENTAL_PLAN_MODE = "true";
   };
 }
