@@ -5,7 +5,7 @@
       enabled = true;
       sign.enabled = false;
       heading = {
-        backgrounds = [];
+        backgrounds = {__empty = null;};
         position = "inline";
       };
       code = {
