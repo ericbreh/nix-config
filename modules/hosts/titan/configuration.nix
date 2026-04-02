@@ -13,6 +13,7 @@
       git
       greetd
       gui
+      handy
       keyd
       kitty
       latex
