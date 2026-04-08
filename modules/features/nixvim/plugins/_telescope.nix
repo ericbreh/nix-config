@@ -84,7 +84,19 @@
       key = "<leader><leader>";
       action = lib.nixvim.mkRaw ''
         function()
-          require("telescope.builtin").find_files { hidden = true, no_ignore = true }
+          require("telescope.builtin").find_files({
+              find_command = {
+                  "fd",
+                  "--type", "f",
+                  "--hidden",
+                  "--no-ignore",
+                  "--exclude", ".git",
+                  "--exclude", ".direnv",
+                  "--exclude", ".venv",
+                  "--exclude", "__pycache__",
+                  "--exclude", "node_modules",
+              },
+          })
         end
       '';
       options.desc = "Search Files";

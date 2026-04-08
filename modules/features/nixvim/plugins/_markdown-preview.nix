@@ -1,4 +1,11 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
+  extraPackages = with pkgs; [
+    pandoc
+  ];
   plugins.markdown-preview.enable = true;
 
   keymaps = [
