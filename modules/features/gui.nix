@@ -12,6 +12,7 @@
       signal-desktop
       altus
       zoom-us
+      teams-for-linux
 
       jellyfin-media-player
       feishin
