@@ -21,6 +21,7 @@
       rnote
       inkscape
       obsidian
+      kdePackages.kdenlive
 
       qbittorrent
       proton-vpn
