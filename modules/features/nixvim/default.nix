@@ -19,7 +19,6 @@
     ./plugins/_vimtex.nix
     ./plugins/_markdown-preview.nix
     ./plugins/_render-markdown.nix
-    ./plugins/_flutter-tools.nix
     ./plugins/_no-neck-pain.nix
     ./plugins/_mini.nix
     ./plugins/_snacks.nix

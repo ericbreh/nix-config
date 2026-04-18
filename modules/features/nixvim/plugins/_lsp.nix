@@ -48,6 +48,7 @@
         rootMarkers = [".git"];
       };
       gopls.enable = true;
+      dartls.enable = true;
       texlab.enable = true;
       ltex_plus = {
         enable = true;
