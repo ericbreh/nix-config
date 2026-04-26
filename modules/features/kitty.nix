@@ -22,6 +22,7 @@
         hide_window_decorations = "yes";
         enable_audio_bell = "no";
         confirm_os_window_close = 2;
+        update_check_interval = 0;
       };
     };
   };
