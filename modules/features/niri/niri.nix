@@ -26,14 +26,13 @@
 
     programs.noctalia-shell = {
       enable = true;
-      systemd.enable = true;
     };
 
     home.file = {
       ".config/niri".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/niri";
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/modules/features/niri/config/niri";
       ".config/noctalia/".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/noctalia";
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/modules/features/niri/config/noctalia";
     };
     home.packages = with pkgs; [
       wl-clipboard
