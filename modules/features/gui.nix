@@ -24,6 +24,7 @@
       kdePackages.kdenlive
 
       qbittorrent
+      bitwarden-desktop
       proton-vpn
       prismlauncher
 
