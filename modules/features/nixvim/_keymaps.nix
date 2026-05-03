@@ -37,6 +37,7 @@
     }
 
     {
+      mode = ["n"];
       key = "<Esc>";
       action = "<cmd>nohlsearch<CR>";
       options.desc = "Clear search highlights";

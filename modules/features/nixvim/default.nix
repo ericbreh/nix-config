@@ -22,6 +22,7 @@
     ./plugins/_no-neck-pain.nix
     ./plugins/_mini.nix
     ./plugins/_snacks.nix
+    ./plugins/_multicursors.nix
   ];
 in {
   flake.modules.nixos.nixvim = {
