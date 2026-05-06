@@ -19,6 +19,7 @@
       latex
       lazygit
       nh
+      nix-ld
       niri
       nixvim
       podman
