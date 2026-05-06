@@ -42,6 +42,11 @@
       url = "github:cjpais/Handy";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    kunifiedpush-flake = {
+      url = "github:eko-network/kunifedpush-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:

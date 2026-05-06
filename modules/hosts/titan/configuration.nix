@@ -16,6 +16,7 @@
       handy
       keyd
       kitty
+      kunifiedpush
       latex
       lazygit
       nh
