@@ -21,6 +21,7 @@ binds {
     Mod+W { spawn "zen-beta"; }
     Mod+D { spawn "nautilus"; }
     Mod+T { spawn "handy" "--toggle-transcription"; }
+    Mod+E { spawn "obsidian"; }
 
 
     // Noctalia shell binds

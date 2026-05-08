@@ -17,27 +17,28 @@
       jellyfin-media-player
       feishin
 
-      vscode
-      rnote
-      inkscape
-      obsidian
-      kdePackages.kdenlive
-
       qbittorrent
       bitwarden-desktop
       proton-vpn
       prismlauncher
 
-      nautilus
       seahorse
-      loupe
-      baobab
       gnome-disk-utility
+
+      nautilus
       papers
+      loupe
       snapshot
       showtime
-      decibels
-      gnome-control-center
+      video-trimmer
+
+      vscode
+      obsidian
+
+      rnote
+      inkscape
+      kdePackages.kdenlive
+      pinta
     ];
   };
 }
