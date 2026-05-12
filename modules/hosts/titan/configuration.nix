@@ -10,6 +10,7 @@
       comma
       dev
       direnv
+      eko
       git
       greetd
       gui

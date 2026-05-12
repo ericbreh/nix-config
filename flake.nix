@@ -36,6 +36,12 @@
     };
 
     eko-messenger-client.url = "github:eko-network/eko-messenger-client";
+
+    eko = {
+      url = "github:eko-network/eko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixvim.url = "github:nix-community/nixvim";
 
     handy = {
