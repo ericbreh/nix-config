@@ -57,18 +57,6 @@
 
     syncthing.dataDir = "/srv/storage/syncthing";
     time.timeZone = "America/Los_Angeles";
-    security.sudo.extraRules = [
-      {
-        users = [config.mainUser];
-        commands = [
-          {
-            command = "ALL";
-            options = ["NOPASSWD"];
-          }
-        ];
-      }
-    ];
-
     services.tailscale.enable = true;
   };
 }
