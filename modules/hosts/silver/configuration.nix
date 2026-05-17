@@ -14,7 +14,7 @@
       keyd
       lazygit
       nh
-      nvim
+      nixvim
       openssh
       restic
       samba
