@@ -59,14 +59,33 @@
       home.stateVersion = "25.05";
     };
 
+    services.tailscale.enable = true;
     services.automatic-timezoned.enable = true;
     services.geoclue2.enable = true;
-    services.fprintd.enable = false;
-    services.power-profiles-daemon.enable = true;
     services.gvfs.enable = true;
     services.udisks2.enable = true;
     services.printing.enable = true;
-    services.tailscale.enable = true;
+    services.fprintd.enable = false;
+    services.power-profiles-daemon.enable = true;
     services.thermald.enable = true;
+    services.pulseaudio.enable = false;
+    security.rtkit.enable = true;
+    services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+    hardware = {
+      bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+      };
+      i2c.enable = true;
+    };
+    services.xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
   };
 }

@@ -58,5 +58,35 @@
     syncthing.dataDir = "/srv/storage/syncthing";
     time.timeZone = "America/Los_Angeles";
     services.tailscale.enable = true;
+    services.logind = {
+      settings = {
+        Login = {
+          AllowSuspend = false;
+          AllowHibernation = false;
+          AllowHybridSleep = false;
+          AllowSuspendThenHibernate = false;
+          HandleLidSwitch = "ignore";
+        };
+      };
+    };
+    services.tlp = {
+      enable = true;
+      settings = {
+        STOP_CHARGE_THRESH_BAT0 = 55;
+        START_CHARGE_THRESH_BAT0 = 45;
+      };
+    };
+
+    fileSystems."/srv/storage" = {
+      device = "/dev/disk/by-uuid/daf86907-e811-4bd1-9baf-fa44f2a83203";
+      fsType = "ext4";
+      options = ["noatime"];
+    };
+
+    fileSystems."/srv/backup" = {
+      device = "/dev/disk/by-uuid/ae6a911d-ccbf-48fc-a54f-2ba26a036269";
+      fsType = "ext4";
+      options = ["nofail" "noatime"];
+    };
   };
 }
