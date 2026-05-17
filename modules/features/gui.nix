@@ -31,6 +31,7 @@
       snapshot
       showtime
       video-trimmer
+      gnome-text-editor
 
       vscode
       obsidian
