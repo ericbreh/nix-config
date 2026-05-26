@@ -19,7 +19,7 @@
         "--keep-monthly 6"
       ];
       backupPrepareCommand = ''
-        ${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null "$(cat ${config.age.secrets.healthchecks-restic.path})/start"
+        ${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null "$(cat ${config.age.secrets.healthchecks-restic.path})/start" || true
       '';
     };
 
@@ -56,12 +56,12 @@
         set -euo pipefail
         HC_URL=$(cat ${config.age.secrets.healthchecks-restic-check.path})
 
-        curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/start"
+        curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/start" || true
 
         if restic check --read-data-subset=10%; then
-          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL"
+          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL" || true
         else
-          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail"
+          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail" || true
           exit 1
         fi
       '';

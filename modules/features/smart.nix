@@ -15,7 +15,7 @@
 
         HC_URL=$(cat ${config.age.secrets.healthchecks-smart.path})
 
-        curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/start"
+        curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/start" || true
 
         FAILED=0
 
@@ -44,10 +44,10 @@
         done
 
         if [ "$FAILED" -eq 1 ]; then
-          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail"
+          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail" || true
           exit 1
         else
-          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL"
+          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL" || true
         fi
       '';
     };

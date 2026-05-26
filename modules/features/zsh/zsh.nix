@@ -34,7 +34,6 @@
       ];
 
       shellAliases = {
-        rcat = "command cat";
         cat = "bat";
         ls = "eza --group-directories-first --icons=auto";
         la = "ls -A";
