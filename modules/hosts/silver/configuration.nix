@@ -110,6 +110,18 @@
         kernelPackages = pkgs.linuxPackages_latest;
       };
 
+      security.sudo.extraRules = [
+        {
+          users = [config.mainUser];
+          commands = [
+            {
+              command = "ALL";
+              options = ["NOPASSWD"];
+            }
+          ];
+        }
+      ];
+
       syncthing.dataDir = "/srv/storage/syncthing";
       services.tailscale.enable = true;
       programs.zsh.enable = true;
