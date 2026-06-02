@@ -11,6 +11,7 @@
       dev
       direnv
       eko
+      foot
       git
       greetd
       gui

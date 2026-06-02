@@ -17,7 +17,7 @@ binds {
 
 
     // Apps
-    Mod+Q { spawn "kitty"; }
+    Mod+Q { spawn "foot"; }
     Mod+W { spawn "zen-beta"; }
     Mod+D { spawn "nautilus"; }
     Mod+T { spawn "handy" "--toggle-transcription"; }

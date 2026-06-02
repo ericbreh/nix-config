@@ -49,6 +49,8 @@
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
         source ${./.p10k.zsh}
 
+        bindkey '^H' backward-kill-word
+
         setopt GLOB_DOTS
         zstyle ':completion:*' special-dirs false
         zstyle ':completion:*:cd:*' tag-order 'directories'

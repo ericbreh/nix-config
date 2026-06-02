@@ -13,8 +13,6 @@
       keybindings = {
         "ctrl+v" = "paste_from_clipboard";
         "ctrl+c" = "copy_or_interrupt";
-        "ctrl+backspace" = "send_text all \\x17";
-        "ctrl+delete" = "send_text all \\x1b[3;5~";
       };
       settings = {
         # background = "#171717";
