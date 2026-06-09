@@ -1,27 +1,10 @@
 # ericbreh's nix-config
 
-```
-     _   ___    _      
-    +o\  \  \  / \     
-    \oo\  \  \/  /     
-  ,oo+oo+oo\   ,/ +\   
- <oooooooooo\  \ /os;  
-     /``/    \  ,oo/   
-,─~─'  /      \,oooooo,
-\__   ;s      /oo/sss>`
-  /  /so\____/ss/____  
- `, / \oo\   ```     / 
-  \/ /sooo\─~.  .─~─`  
-    /so/\oo\  \  \     
-    \o/  \s+\  \_/     
-
-```
-
 NixOS config focused on simplicity and ease of use. Follows the dendritic pattern.
 
 - **Standalone Features:** Every file or directory under `modules/features/` is an isolated feature that never imports another feature.
 
-- **Unified Exports:** Each feature exports a standard NixOS module. If it requires Home Manager options, the NixOS module injects them via `home-manager.sharedModules`.
+- **Unified Exports:** Each feature exports a NixOS module. If it requires Home Manager options, the NixOS module injects them via `home-manager.sharedModules`.
 
 - **Flat Directory Structure:** Features remain as single `.nix` files in `modules/features/` by default, becoming a directory when they require supporting files.
 
