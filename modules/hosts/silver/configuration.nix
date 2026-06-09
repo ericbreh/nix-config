@@ -13,6 +13,7 @@
       jellyfin
       keyd
       lazygit
+      navidrome
       nh
       nixvim
       openssh
