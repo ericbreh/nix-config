@@ -17,10 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake/beta";
@@ -43,11 +40,6 @@
     };
 
     nixvim.url = "github:nix-community/nixvim";
-
-    handy = {
-      url = "github:cjpais/Handy";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     kunifiedpush-flake = {
       url = "github:eko-network/kunifedpush-flake";

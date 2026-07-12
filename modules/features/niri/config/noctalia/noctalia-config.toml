@@ -1,0 +1,227 @@
+[bar.default]
+concave_edge_corners = false
+end = [ "tray", "notifications", "volume", "battery", "control-center" ]
+margin_ends = 0
+radius = 0
+shadow = false
+start = [ "workspaces", "media" ]
+thickness = 24
+
+[brightness]
+enable_ddcutil = true
+sync_all_monitors = true
+
+    [brightness.monitor.DP-1]
+    backend = "ddcutil"
+
+    [brightness.monitor.eDP-1]
+    backend = "backlight"
+
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660.0
+
+[location]
+auto_locate = true
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-login-box@DP-1",
+    "lockscreen-widget-0000000000000001",
+    "lockscreen-widget-0000000000000002"
+]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 604.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = false
+        show_password_hint = false
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 667.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = false
+        show_password_hint = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 224.0
+    box_width = 528.0
+    cx = 960.0
+    cy = 444.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = false
+        background_opacity = 0.80000000000000004
+        clock_style = "digital"
+        color = "primary"
+        format = "{:%I:%M}"
+        shadow = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 272.0
+    box_width = 528.0
+    cx = 960.0
+    cy = 480.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        background = false
+        color = "primary"
+        format = "{:%I:%M}"
+        shadow = false
+
+[nightlight]
+enabled = true
+
+[osd]
+position = "bottom_center"
+
+[shell]
+font_family = "MesloLGS Nerd Font Propo"
+launch_apps_as_systemd_services = true
+niri_overview_type_to_launch_enabled = true
+password_style = "random"
+settings_show_advanced = false
+time_format = "{:%I:%M}"
+
+    [shell.panel]
+    open_near_click_control_center = true
+    session_placement = "floating"
+    session_position = "center"
+
+    [shell.session]
+    grid = true
+    grid_columns = 2
+
+        [[shell.session.actions]]
+        action = "lock"
+        countdown_seconds = 0.0
+        enabled = true
+        shortcut = "1"
+        variant = "default"
+
+        [[shell.session.actions]]
+        action = "logout"
+        countdown_seconds = 0.0
+        enabled = true
+        shortcut = "2"
+        variant = "default"
+
+        [[shell.session.actions]]
+        action = "lock_and_suspend"
+        countdown_seconds = 0.0
+        enabled = false
+        shortcut = "3"
+        variant = "default"
+
+        [[shell.session.actions]]
+        action = "reboot"
+        countdown_seconds = 0.0
+        enabled = true
+        shortcut = "4"
+        variant = "default"
+
+        [[shell.session.actions]]
+        action = "shutdown"
+        countdown_seconds = 0.0
+        enabled = true
+        shortcut = "5"
+        variant = "destructive"
+
+[theme]
+custom_palette = "mist-mut"
+source = "wallpaper"
+wallpaper_scheme = "muted"
+
+    [theme.templates]
+    builtin_ids = [ "niri" ]
+
+[wallpaper.default]
+path = "/home/ericbreh/Pictures/Wallpapers/mist.png"
+
+[wallpaper.last]
+path = "/home/ericbreh/Pictures/Wallpapers/mist.png"
+
+[wallpaper.monitors.DP-1]
+path = "/home/ericbreh/Pictures/Wallpapers/mist.png"
+
+[weather]
+unit = "imperial"
+
+[widget.clock]
+format = "{:%a %b %e  %l:%M %p}"
+
+[widget.media]
+hide_when_no_media = true
+
+[widget.volume]
+show_label = false
+
+[widget.workspaces]
+display = "none"

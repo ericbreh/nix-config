@@ -5,7 +5,7 @@
 
   flake.modules.homeManager.handy = {pkgs, ...}: {
     home.packages = [
-      inputs.handy.packages.${pkgs.stdenv.hostPlatform.system}.default
+      pkgs.handy
       pkgs.wtype
     ];
   };

@@ -33,11 +33,12 @@
 
     qt = {
       enable = true;
-      platformTheme.name = "gtk";
+      platformTheme.name = "gtk3";
       style.name = "adwaita-dark";
     };
 
     home.pointerCursor = {
+      enable = true;
       name = "phinger-cursors-dark";
       package = pkgs.phinger-cursors;
       size = 24;

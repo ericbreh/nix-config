@@ -9,7 +9,7 @@
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
     environment.systemPackages = with pkgs; [
       xwayland-satellite
-      gpu-screen-recorder
+      ddcutil
     ];
 
     services.upower.enable = true;
@@ -24,8 +24,9 @@
       inputs.noctalia.homeModules.default
     ];
 
-    programs.noctalia-shell = {
+    programs.noctalia = {
       enable = true;
+      systemd.enable = true;
     };
 
     home.file = {

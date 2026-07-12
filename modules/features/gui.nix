@@ -18,7 +18,7 @@
       feishin
 
       qbittorrent
-      bitwarden-desktop
+      # bitwarden-desktop
       proton-vpn
       prismlauncher
 
