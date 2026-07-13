@@ -38,7 +38,6 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 recent-windows {
     highlight {
         corner-radius 12
-        active-color   "#52525b"
     }
 }
 
@@ -76,13 +75,10 @@ layout {
     background-color "transparent"
     focus-ring {
         off
-        width 1
-        active-color   "#52525b"
     }
 }
 
 // noctalia
-spawn-at-startup "noctalia-shell"
 debug {
   honor-xdg-activation-with-invalid-serial
 }
