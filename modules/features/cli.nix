@@ -13,6 +13,7 @@
       yazi
       mgitstatus
       rsync
+      speedtest-go
     ];
   };
 }

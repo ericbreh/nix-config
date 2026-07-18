@@ -9,21 +9,22 @@
       agenix
       cli
       git
-      immich
-      jellyfin
       keyd
       lazygit
-      navidrome
       nh
       nixvim
       openssh
       restic
-      samba
       smart
-      syncthing
       tmux
-      webdav
       zsh
+
+      immich
+      jellyfin
+      navidrome
+      samba
+      syncthing
+      webdav
     ];
 
     options.mainUser = lib.mkOption {
