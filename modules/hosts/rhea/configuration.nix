@@ -65,6 +65,12 @@
       time.timeZone = "America/Detroit";
       i18n.defaultLocale = "en_US.UTF-8";
 
+      fileSystems."/srv/storage" = {
+        device = "/dev/disk/by-uuid/4e109b69-b58d-4e40-9f68-9da700e19211";
+        fsType = "ext4";
+        options = ["noatime"];
+      };
+
       boot = {
         loader = {
           systemd-boot.enable = true;
