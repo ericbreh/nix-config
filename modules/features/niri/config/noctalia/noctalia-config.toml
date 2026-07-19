@@ -6,6 +6,7 @@ radius = 0
 shadow = false
 start = [ "workspaces", "media" ]
 thickness = 28
+widget_spacing = 12
 
 [brightness]
 enable_ddcutil = true

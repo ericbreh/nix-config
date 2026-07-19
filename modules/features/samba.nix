@@ -13,6 +13,7 @@
           "hosts deny" = "0.0.0.0/0";
           "guest account" = "nobody";
           "map to guest" = "bad user";
+          "vfs objects" = "catia fruit streams_xattr";
         };
         "syncthing" = {
           "path" = "/srv/storage/syncthing";
