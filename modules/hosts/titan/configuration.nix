@@ -6,31 +6,34 @@
     ...
   }: {
     imports = with inputs.self.modules.nixos; [
+      # Common
       cli
       comma
+      git
+      keyd
+      lazygit
+      nh
+      nixvim
+      tmux
+      zsh
+
+      # Personal
       dev
       direnv
       eko
-      git
       greetd
       gui
       handy
-      keyd
       kitty
       kunifiedpush
       latex
-      lazygit
-      nh
       nix-ld
       niri
-      nixvim
       podman
       steam
       syncthing
       theme
-      tmux
       virtualization
-      zsh
       zen-browser
     ];
 

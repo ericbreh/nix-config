@@ -6,7 +6,7 @@
     ...
   }: {
     imports = with inputs.self.modules.nixos; [
-      agenix
+      # Common
       cli
       comma
       git
@@ -14,12 +14,17 @@
       lazygit
       nh
       nixvim
-      openssh
-      restic
-      smart
       tmux
       zsh
 
+      # Server
+      agenix
+      openssh
+      restic
+      server-power
+      smart
+
+      # Apps
       immich
       jellyfin
       navidrome
@@ -70,25 +75,6 @@
       zramSwap.enable = true;
       time.timeZone = "America/Los_Angeles";
       i18n.defaultLocale = "en_US.UTF-8";
-
-      services.logind = {
-        settings = {
-          Login = {
-            AllowSuspend = false;
-            AllowHibernation = false;
-            AllowHybridSleep = false;
-            AllowSuspendThenHibernate = false;
-            HandleLidSwitch = "ignore";
-          };
-        };
-      };
-      services.tlp = {
-        enable = true;
-        settings = {
-          STOP_CHARGE_THRESH_BAT0 = 55;
-          START_CHARGE_THRESH_BAT0 = 45;
-        };
-      };
 
       fileSystems."/srv/storage" = {
         device = "/dev/disk/by-uuid/daf86907-e811-4bd1-9baf-fa44f2a83203";

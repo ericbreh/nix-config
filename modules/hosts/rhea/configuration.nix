@@ -6,6 +6,7 @@
     ...
   }: {
     imports = with inputs.self.modules.nixos; [
+      # Common
       cli
       comma
       git
@@ -13,9 +14,12 @@
       lazygit
       nh
       nixvim
-      openssh
       tmux
       zsh
+
+      # Server
+      openssh
+      server-power
     ];
 
     options.mainUser = lib.mkOption {
@@ -60,25 +64,6 @@
       zramSwap.enable = true;
       time.timeZone = "America/Detroit";
       i18n.defaultLocale = "en_US.UTF-8";
-
-      services.logind = {
-        settings = {
-          Login = {
-            AllowSuspend = false;
-            AllowHibernation = false;
-            AllowHybridSleep = false;
-            AllowSuspendThenHibernate = false;
-            HandleLidSwitch = "ignore";
-          };
-        };
-      };
-      services.tlp = {
-        enable = true;
-        settings = {
-          STOP_CHARGE_THRESH_BAT0 = 55;
-          START_CHARGE_THRESH_BAT0 = 45;
-        };
-      };
 
       boot = {
         loader = {
