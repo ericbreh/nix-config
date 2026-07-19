@@ -62,7 +62,7 @@
       users.users.${config.mainUser} = {
         isNormalUser = true;
         description = "Eric Chuang";
-        extraGroups = ["networkmanager" "wheel" "i2c" "dialout"];
+        extraGroups = ["networkmanager" "wheel" "dialout"];
         shell = pkgs.zsh;
       };
 
@@ -75,7 +75,6 @@
       systemd.services.NetworkManager-wait-online.enable = false;
       zramSwap.enable = true;
       services.automatic-timezoned.enable = true;
-      services.geoclue2.enable = true;
       i18n.defaultLocale = "en_US.UTF-8";
       services.gvfs.enable = true;
       services.udisks2.enable = true;
@@ -96,11 +95,6 @@
           enable = true;
           powerOnBoot = true;
         };
-        i2c.enable = true;
-      };
-      services.xserver.xkb = {
-        layout = "us";
-        variant = "";
       };
 
       boot = {

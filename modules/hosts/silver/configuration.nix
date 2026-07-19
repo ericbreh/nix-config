@@ -8,6 +8,7 @@
     imports = with inputs.self.modules.nixos; [
       agenix
       cli
+      comma
       git
       keyd
       lazygit
@@ -61,9 +62,6 @@
       home-manager.users.${config.mainUser} = {
         home.homeDirectory = "/home/${config.mainUser}";
         home.stateVersion = "25.05";
-        home.packages = with pkgs; [
-          iperf
-        ];
         tmux.prefix = "b";
       };
 
@@ -72,6 +70,7 @@
       zramSwap.enable = true;
       time.timeZone = "America/Los_Angeles";
       i18n.defaultLocale = "en_US.UTF-8";
+
       services.logind = {
         settings = {
           Login = {
