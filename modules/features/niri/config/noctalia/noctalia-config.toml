@@ -1,3 +1,6 @@
+[audio]
+enable_overdrive = true
+
 [bar.default]
 concave_edge_corners = false
 end = [ "tray", "cpu", "ram", "notifications", "volume", "battery", "control-center" ]

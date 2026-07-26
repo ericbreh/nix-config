@@ -20,6 +20,9 @@
       # Server
       openssh
       server-power
+
+      # Apps
+      navidrome
     ];
 
     options.mainUser = lib.mkOption {
