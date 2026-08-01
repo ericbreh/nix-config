@@ -34,7 +34,7 @@ widget_order = []
 
 [dock]
 auto_hide = true
-enabled = true
+enabled = false
 reserve_space = false
 
 [idle]
