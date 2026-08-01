@@ -21,11 +21,10 @@
       dev
       direnv
       eko
-      greetd
+      gnome
       gui
       handy
       kitty
-      kunifiedpush
       latex
       nix-ld
       niri
