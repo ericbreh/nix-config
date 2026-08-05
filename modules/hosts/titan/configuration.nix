@@ -14,6 +14,7 @@
       lazygit
       nh
       nixvim
+      ssh
       tmux
       zsh
 
