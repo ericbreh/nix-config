@@ -18,6 +18,9 @@
       zsh
 
       # Server
+      agenix
+      duckdns
+      nginx
       openssh
       server-power
 
@@ -45,6 +48,8 @@
       system.stateVersion = "25.05";
 
       networking.hostName = "rhea";
+
+      duckdns.domain = "ericbreh";
 
       users.users.${config.mainUser} = {
         isNormalUser = true;

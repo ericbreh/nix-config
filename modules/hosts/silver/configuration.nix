@@ -27,7 +27,6 @@
       # Apps
       immich
       jellyfin
-      navidrome
       samba
       syncthing
       webdav

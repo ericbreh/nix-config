@@ -9,5 +9,6 @@
     age.secrets.healthchecks-restic.file = inputs.self + "/secrets/healthchecks-restic.age";
     age.secrets.healthchecks-restic-check.file = inputs.self + "/secrets/healthchecks-restic-check.age";
     age.secrets.healthchecks-smart.file = inputs.self + "/secrets/healthchecks-smart.age";
+    age.secrets.duckdns.file = inputs.self + "/secrets/duckdns.age";
   };
 }
