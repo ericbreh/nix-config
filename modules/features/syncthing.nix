@@ -64,6 +64,18 @@
             fsWatcherDelayS = 1;
             rescanIntervalS = 300;
           };
+          "Videos" = {
+            path = "${config.syncthing.dataDir}/Videos";
+            devices = [
+              "titan"
+              "silver"
+            ];
+            ignorePatterns = ["Screencasts"];
+            type =
+              if hostName == "titan"
+              then "sendonly"
+              else "receiveonly";
+          };
         };
       };
     };
