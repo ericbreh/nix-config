@@ -4,6 +4,8 @@
     config,
     ...
   }: {
+    programs.fuse.enable = true;
+
     services.restic.backups.primary = {
       repository = "/srv/backup/restic";
       paths = ["/srv/storage"];
