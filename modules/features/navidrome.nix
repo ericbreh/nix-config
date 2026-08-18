@@ -4,6 +4,7 @@
       enable = true;
       settings = {
         Address = "127.0.0.1";
+        BaseURL = "/music";
         MusicFolder = "/srv/storage/media/music";
       };
     };
@@ -15,23 +16,18 @@
       '';
 
       virtualHosts."${config.duckdns.domain}.duckdns.org" = {
-        enableACME = true;
-        forceSSL = true;
-        extraConfig = ''
-          add_header Strict-Transport-Security "max-age=31536000" always;
-        '';
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:4533";
+        locations."/music" = {
+          proxyPass = "http://127.0.0.1:4533/music";
           proxyWebsockets = true;
         };
-        locations."/auth/" = {
-          proxyPass = "http://127.0.0.1:4533";
+        locations."/music/auth/" = {
+          proxyPass = "http://127.0.0.1:4533/music/auth/";
           extraConfig = ''
             limit_req zone=navidrome_login burst=5 nodelay;
           '';
         };
-        locations."/rest/" = {
-          proxyPass = "http://127.0.0.1:4533";
+        locations."/music/rest/" = {
+          proxyPass = "http://127.0.0.1:4533/music/rest/";
           extraConfig = ''
             limit_req zone=navidrome_subsonic burst=30 nodelay;
           '';

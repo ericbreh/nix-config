@@ -25,6 +25,7 @@
       server-power
 
       # Apps
+      audiobookshelf
       navidrome
     ];
 
