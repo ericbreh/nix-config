@@ -6,7 +6,6 @@
   flake.modules.homeManager.dev = {pkgs, ...}: {
     home.packages = with pkgs; [
       cursor-cli
-      gemini-cli
       gh
       uv
       clang

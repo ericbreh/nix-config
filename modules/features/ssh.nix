@@ -7,14 +7,14 @@
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks = {
+      settings = {
         silver = {
-          hostname = "silver";
-          user = "ericbreh";
+          HostName = "silver";
+          User = "ericbreh";
         };
         rhea = {
-          hostname = "10.0.0.173";
-          user = "ericbreh";
+          HostName = "10.0.0.173";
+          User = "ericbreh";
         };
       };
     };
