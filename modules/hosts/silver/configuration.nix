@@ -26,7 +26,6 @@
 
       # Apps
       immich
-      jellyfin
       samba
       syncthing
       webdav

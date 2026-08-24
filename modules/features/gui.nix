@@ -14,7 +14,6 @@
       zoom-us
       teams-for-linux
 
-      jellyfin-media-player
       feishin
 
       qbittorrent
