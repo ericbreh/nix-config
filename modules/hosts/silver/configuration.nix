@@ -23,6 +23,7 @@
       restic
       server-power
       smart
+      tailscale
 
       # Apps
       immich
@@ -108,7 +109,6 @@
       ];
 
       syncthing.dataDir = "/srv/storage/syncthing";
-      services.tailscale.enable = true;
       programs.zsh.enable = true;
     };
   };

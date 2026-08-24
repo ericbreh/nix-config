@@ -32,6 +32,7 @@
       ssh
       steam
       syncthing
+      tailscale
       theme
       virtualization
       zen-browser
@@ -109,7 +110,6 @@
         kernelPackages = pkgs.linuxPackages_latest;
       };
 
-      services.tailscale.enable = true;
       programs.zsh.enable = true;
     };
   };
