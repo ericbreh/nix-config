@@ -14,7 +14,6 @@
       lazygit
       nh
       nixvim
-      ssh
       tmux
       zsh
 
@@ -30,6 +29,7 @@
       nix-ld
       niri
       podman
+      ssh
       steam
       syncthing
       theme

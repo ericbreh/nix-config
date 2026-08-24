@@ -75,9 +75,21 @@
       i18n.defaultLocale = "en_US.UTF-8";
 
       fileSystems."/srv/storage" = {
-        device = "/dev/disk/by-uuid/4e109b69-b58d-4e40-9f68-9da700e19211";
+        device = "/dev/disk/by-uuid/7944ad22-ff1d-4c9c-bcd1-121258c61679";
         fsType = "ext4";
         options = ["noatime"];
+      };
+
+      fileSystems."/srv/backup" = {
+        device = "/dev/disk/by-uuid/85724815-6a26-4e72-8b98-102b1e304c5b";
+        fsType = "ext4";
+        options = ["nofail" "noatime"];
+      };
+
+      fileSystems."/srv/internal" = {
+        device = "/dev/disk/by-uuid/4e109b69-b58d-4e40-9f68-9da700e19211";
+        fsType = "ext4";
+        options = ["nofail" "noatime"];
       };
 
       boot = {
