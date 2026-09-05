@@ -21,7 +21,7 @@
       dev
       direnv
       eko
-      gnome
+      greetd
       gui
       handy
       kitty
