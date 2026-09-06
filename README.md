@@ -11,3 +11,27 @@ Nix config focused on simplicity and ease of use. Follows the dendritic pattern.
 This allows each host to maintain a single list of features in its `configuration.nix` which could include any combination of features without worrying about duplicate imports.
 
 - **Generated Hardware Config:** Each NixOS host's `hardware.nix` contains only what `nixos-generate-config` produced. All manual changes live in the host's `configuration.nix`.
+
+## Hosts
+
+| Host | Type | Description |
+| --- | --- | --- |
+| `titan` | NixOS | Laptop |
+| `silver` | NixOS | Server |
+| `rhea` | NixOS | Server |
+| `iapetus` | Home Manager | Non-NixOS systems |
+
+## Installation
+
+### NixOS host
+
+```sh
+nixos-generate-config --show-hardware-config > modules/hosts/<host>/hardware.nix
+sudo nixos-rebuild switch --flake .#<host>
+```
+
+### Home Manager host
+
+```sh
+nix run home-manager -- switch --flake .#<host>
+```

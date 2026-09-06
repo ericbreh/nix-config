@@ -4,4 +4,3 @@
     modules = [inputs.self.modules.homeManager.iapetus];
   };
 }
-
