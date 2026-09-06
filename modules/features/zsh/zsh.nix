@@ -10,7 +10,11 @@
       pushd "$HOME/nix-config" > /dev/null
       ${pkgs.alejandra}/bin/alejandra . > /dev/null 2>&1
       git add .
-      nh os switch .
+      if [ -f /etc/NIXOS ]; then
+        nh os switch .
+      else
+        nh home switch .
+      fi
       popd >/dev/null
     '';
   in {
