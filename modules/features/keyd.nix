@@ -11,7 +11,6 @@
             leftmeta = "leftalt";
             rightcontrol = "capslock";
             space = "overload(nav, space)";
-            apostrophe = "overload(control, apostrophe)";
           };
           nav = {
             h = "left";
