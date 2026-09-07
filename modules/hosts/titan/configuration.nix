@@ -29,6 +29,7 @@
       nix-ld
       niri
       podman
+      python
       ssh
       steam
       syncthing

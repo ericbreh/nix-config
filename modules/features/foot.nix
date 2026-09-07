@@ -1,6 +1,6 @@
-{self, ...}: {
+{inputs, ...}: {
   flake.modules.nixos.foot = {
-    home-manager.sharedModules = [self.modules.homeManager.foot];
+    home-manager.sharedModules = [inputs.self.modules.homeManager.foot];
   };
 
   flake.modules.homeManager.foot = {

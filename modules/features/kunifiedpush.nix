@@ -1,10 +1,6 @@
-{
-  self,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   flake.modules.nixos.kunifiedpush = {
-    home-manager.sharedModules = [self.modules.homeManager.kunifiedpush];
+    home-manager.sharedModules = [inputs.self.modules.homeManager.kunifiedpush];
   };
 
   flake.modules.homeManager.kunifiedpush = {
