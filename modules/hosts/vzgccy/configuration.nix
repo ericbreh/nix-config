@@ -3,6 +3,7 @@
     imports = with inputs.self.modules.homeManager; [
       cli
       comma
+      copilot
       lazygit
       nh
       nixvim
