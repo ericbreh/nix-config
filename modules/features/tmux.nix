@@ -29,7 +29,7 @@
 
         set -g renumber-windows on
         set -g focus-events on
-        set -s set-clipboard off
+        set -s set-clipboard on
 
         set -g status-position top
         set -g status-justify absolute-centre
@@ -39,10 +39,15 @@
         set -g window-status-current-style "fg=white bold"
         set -g status-right "#h "
         set -g status-left " #S"
+        set -ga terminal-overrides ",*256col*:RGB"
 
         bind -T copy-mode-vi v send -X begin-selection
-        bind -T copy-mode-vi y send -X copy-pipe-and-cancel "wl-copy"
-        bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "wl-copy"
+        bind -T copy-mode-vi y if-shell 'command -v clip.exe' \
+          'send -X copy-pipe-and-cancel "clip.exe"' \
+          'send -X copy-pipe-and-cancel "wl-copy"'
+        bind-key -T copy-mode-vi MouseDragEnd1Pane if-shell 'command -v clip.exe' \
+          'send-keys -X copy-pipe-and-cancel "clip.exe"' \
+          'send-keys -X copy-pipe-and-cancel "wl-copy"'
 
         bind c new-window -c "#{pane_current_path}"
         bind '"' split-window -c "#{pane_current_path}"
