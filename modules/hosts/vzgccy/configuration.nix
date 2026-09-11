@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.homeManager.iapetus = {
+  flake.modules.homeManager.vzgccy = {
     imports = with inputs.self.modules.homeManager; [
       cli
       comma

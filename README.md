@@ -19,7 +19,7 @@ This allows each host to maintain a single list of features in its `configuratio
 | `titan` | NixOS | Laptop |
 | `silver` | NixOS | Server |
 | `rhea` | NixOS | Server |
-| `iapetus` | Home Manager | Non-NixOS systems |
+| `vzgccy` | Home Manager | WSL |
 
 ## Installation
 
