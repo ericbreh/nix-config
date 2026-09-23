@@ -23,6 +23,7 @@
       nginx
       openssh
       server-power
+      tailscale
 
       # Apps
       audiobookshelf
