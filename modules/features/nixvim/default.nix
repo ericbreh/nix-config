@@ -55,7 +55,11 @@ in {
     imports = nixvimImports;
   };
 
-  perSystem = {system, config, ...}: {
+  perSystem = {
+    system,
+    config,
+    ...
+  }: {
     nixvimConfigurations.default = inputs.nixvim.lib.evalNixvim {
       inherit system;
       modules = [inputs.self.nixvimModules.default];
