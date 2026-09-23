@@ -35,3 +35,9 @@ sudo nixos-rebuild switch --flake .#<host>
 ```sh
 nix run home-manager -- switch --flake .#<host>
 ```
+
+## Run My Nixvim
+
+```sh
+nix run github:ericbreh/nix-config#nvim
+```
