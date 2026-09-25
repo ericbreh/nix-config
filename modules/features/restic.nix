@@ -29,6 +29,7 @@
     systemd.services."restic-backups-primary" = {
       onSuccess = ["restic-notify-success.service"];
       onFailure = ["restic-notify-failure.service"];
+      unitConfig.RequiresMountsFor = ["/srv/storage" "/srv/backup"];
     };
     systemd.services."restic-notify-success" = {
       description = "Notify healthchecks.io of successful restic backup";
@@ -55,6 +56,7 @@
       serviceConfig = {
         Type = "oneshot";
       };
+      unitConfig.RequiresMountsFor = ["/srv/backup"];
       script = ''
         set -euo pipefail
         HC_URL=$(cat ${config.age.secrets.healthchecks-restic-check.path})

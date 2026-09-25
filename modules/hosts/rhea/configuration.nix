@@ -22,6 +22,7 @@
       duckdns
       nginx
       openssh
+      restic
       server-power
       tailscale
 
