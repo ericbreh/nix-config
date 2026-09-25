@@ -1,5 +1,7 @@
 {...}: {
   flake.modules.nixos.webdav = {config, ...}: {
+    networking.firewall.interfaces."tailscale0".allowedTCPPorts = [8080];
+
     services.webdav = {
       enable = true;
       user = config.mainUser;

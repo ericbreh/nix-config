@@ -20,8 +20,8 @@
           "browseable" = "yes";
           "read only" = "no";
           "guest ok" = "no";
-          "create mask" = "0644";
-          "directory mask" = "0755";
+          "create mask" = "0640";
+          "directory mask" = "0750";
           "valid users" = config.mainUser;
           "force user" = config.mainUser;
           "force group" = "users";
@@ -30,7 +30,7 @@
     };
 
     systemd.tmpfiles.rules = [
-      "d /srv/storage/syncthing 0775 ${config.mainUser} users - -"
+      "d /srv/storage/syncthing 0750 ${config.mainUser} users - -"
     ];
   };
 }
