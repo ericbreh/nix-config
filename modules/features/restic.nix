@@ -18,7 +18,8 @@
       pruneOpts = [
         "--keep-daily 7"
         "--keep-weekly 4"
-        "--keep-monthly 6"
+        "--keep-monthly 12"
+        "--keep-yearly unlimited"
       ];
       backupPrepareCommand = ''
         ${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null "$(cat ${config.age.secrets.healthchecks-restic.path})/start" || true
