@@ -48,7 +48,7 @@
 
     systemd.services."restic-check" = {
       description = "Verify restic repository integrity";
-      path = [pkgs.restic pkgs.curl];
+      path = [pkgs.restic pkgs.curl pkgs.coreutils];
       environment = {
         RESTIC_REPOSITORY = "/srv/backup/restic";
         RESTIC_PASSWORD_FILE = config.age.secrets.restic.path;
@@ -61,9 +61,13 @@
         set -euo pipefail
         HC_URL=$(cat ${config.age.secrets.healthchecks-restic-check.path})
 
+        WEEK=$(date +%-V)
+        SUBSET=$(( (WEEK - 1) % 10 + 1 ))
+
         curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/start" || true
 
-        if restic check --read-data-subset=10%; then
+        echo "Running restic check --read-data-subset=''${SUBSET}/10 (ISO week ''${WEEK})"
+        if restic check --read-data-subset="''${SUBSET}/10"; then
           curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL" || true
         else
           curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail" || true

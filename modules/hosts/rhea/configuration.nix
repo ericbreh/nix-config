@@ -6,7 +6,6 @@
     ...
   }: {
     imports = with inputs.self.modules.nixos; [
-      # Common
       cli
       comma
       git
@@ -17,16 +16,15 @@
       tmux
       zsh
 
-      # Server
       agenix
       duckdns
       nginx
       openssh
       restic
       server-power
+      smartd
       tailscale
 
-      # Apps
       audiobookshelf
       navidrome
     ];

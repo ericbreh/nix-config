@@ -6,7 +6,6 @@
     ...
   }: {
     imports = with inputs.self.modules.nixos; [
-      # Common
       cli
       comma
       git
@@ -17,7 +16,6 @@
       tmux
       zsh
 
-      # Personal
       dev
       direnv
       eko
