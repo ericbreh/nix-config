@@ -14,6 +14,7 @@
       mgitstatus
       rsync
       speedtest-go
+      ripgrep
     ];
   };
 }
