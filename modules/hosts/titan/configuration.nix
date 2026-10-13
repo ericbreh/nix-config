@@ -28,6 +28,7 @@
       niri
       podman
       python
+      simracing
       ssh
       steam
       syncthing

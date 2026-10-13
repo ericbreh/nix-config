@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<joystick configversion="19" appversion="3.5.1">
+    <!--The SDL name for a joystick is included for informational purposes only.-->
+    <sdlname>Logitech G920 Driving Force Racing Wheel</sdlname>
+    <!--The Unique ID for a joystick is included for informational purposes only.-->
+    <uniqueID>030059d36d04000062c20000110100001133497620000ea5df5f4e821</uniqueID>
+    <sets>
+        <set index="1">
+            <axis index="2">
+                <throttle>normal</throttle>
+            </axis>
+            <axis index="1">
+                <throttle>normal</throttle>
+            </axis>
+            <axis index="4">
+                <throttle>normal</throttle>
+            </axis>
+            <axis index="3">
+                <throttle>normal</throttle>
+            </axis>
+            <dpad index="1">
+                <dpadbutton index="8">
+                    <slots>
+                        <slot>
+                            <code>0x1000012</code>
+                            <mode>keyboard</mode>
+                        </slot>
+                    </slots>
+                </dpadbutton>
+                <dpadbutton index="1">
+                    <slots>
+                        <slot>
+                            <code>0x1000013</code>
+                            <mode>keyboard</mode>
+                        </slot>
+                    </slots>
+                </dpadbutton>
+                <dpadbutton index="2">
+                    <slots>
+                        <slot>
+                            <code>0x1000014</code>
+                            <mode>keyboard</mode>
+                        </slot>
+                    </slots>
+                </dpadbutton>
+                <dpadbutton index="4">
+                    <slots>
+                        <slot>
+                            <code>0x1000015</code>
+                            <mode>keyboard</mode>
+                        </slot>
+                    </slots>
+                </dpadbutton>
+            </dpad>
+            <button index="3">
+                <slots>
+                    <slot>
+                        <code>0x1000004</code>
+                        <mode>keyboard</mode>
+                    </slot>
+                </slots>
+            </button>
+        </set>
+    </sets>
+</joystick>
