@@ -4,6 +4,7 @@
     settings = {
       enabled = true;
       sign.enabled = false;
+      anti_conceal.enabled = false;
       heading = {
         backgrounds = {__empty = null;};
         position = "inline";

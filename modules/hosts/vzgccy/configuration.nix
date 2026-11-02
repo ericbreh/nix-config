@@ -7,6 +7,7 @@
       lazygit
       nh
       nixvim
+      python
       tmux
       zsh
     ];
