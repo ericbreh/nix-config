@@ -3,13 +3,24 @@ enable_overdrive = true
 
 [bar.default]
 concave_edge_corners = false
-end = [ "tray", "cpu", "ram", "notifications", "volume", "battery", "control-center" ]
+end = [ "tray", "group:g1", "caffeine", "network", "battery", "control-center" ]
 margin_ends = 0
 radius = 0
 shadow = false
 start = [ "workspaces", "media" ]
 thickness = 28
 widget_spacing = 12
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    border_width = 1.0
+    enabled = true
+    fill = "surface_container"
+    id = "g1"
+    members = [ "temp", "cpu", "ram" ]
+    opacity = 1.0
+    padding = 6.0
 
 [brightness]
 enable_ddcutil = true
@@ -76,30 +87,30 @@ widget_order = [
     visible = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
-    box_height = 196.0
-    box_width = 720.0
+    box_height = 70.0
+    box_width = 400.0
     cx = 960.0
-    cy = 604.0
+    cy = 700.0
     output = "DP-1"
-    placement_height = 0.0
-    placement_width = 0.0
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
         input_opacity = 1.0
         input_radius = 6.0
-        layout = "regular"
+        layout = "compact"
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = false
         show_media = true
         show_session_buttons = true
-        show_unlock_hint = true
+        show_unlock_hint = false
         show_weather = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
@@ -114,7 +125,7 @@ widget_order = [
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -141,7 +152,7 @@ widget_order = [
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -162,8 +173,8 @@ widget_order = [
     cx = 960.0
     cy = 444.0
     output = "DP-1"
-    placement_height = 0.0
-    placement_width = 0.0
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "clock"
 
@@ -290,6 +301,9 @@ path = "/home/ericbreh/Pictures/Wallpapers/mist.png"
 [weather]
 unit = "imperial"
 
+[widget.battery]
+capsule = true
+
 [widget.clock]
 format = "{:%a %b %e  %l:%M %p}"
 
@@ -301,6 +315,9 @@ visualization = "none"
 [widget.media]
 hide_when_no_media = true
 
+[widget.network]
+show_label = false
+
 [widget.notifications]
 hide_when_no_unread = true
 
@@ -308,6 +325,9 @@ hide_when_no_unread = true
 display = "text"
 show_value = true
 stat = "ram_pct"
+visualization = "none"
+
+[widget.temp]
 visualization = "none"
 
 [widget.volume]

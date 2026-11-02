@@ -10,12 +10,7 @@
       uv
       clang
     ];
-    programs.opencode = {
-      enable = true;
-      settings = {
-        plugin = ["opencode-gemini-auth@latest"];
-      };
-    };
+    programs.opencode.enable = true;
     home.sessionVariables.OPENCODE_EXPERIMENTAL_PLAN_MODE = "true";
     programs.git = {ignores = [".opencode/" ".cursor/"];};
   };
