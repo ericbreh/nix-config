@@ -24,11 +24,11 @@
       handy
       kitty
       latex
+      logitech
       nix-ld
       niri
       podman
       python
-      simracing
       ssh
       steam
       syncthing
@@ -106,7 +106,7 @@
           timeout = 1;
           efi.canTouchEfiVariables = true;
         };
-        kernelPackages = pkgs.linuxPackages_latest;
+        kernelPackages = pkgs.linuxPackages;
       };
 
       programs.zsh.enable = true;
