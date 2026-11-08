@@ -22,7 +22,6 @@
       server-power
       tailscale
 
-      immich
       samba
       syncthing
       webdav

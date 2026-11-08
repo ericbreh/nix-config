@@ -26,6 +26,7 @@
       tailscale
 
       audiobookshelf
+      immich
       navidrome
     ];
 
