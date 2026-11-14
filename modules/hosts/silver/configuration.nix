@@ -21,10 +21,6 @@
       restic
       server-power
       tailscale
-
-      samba
-      syncthing
-      webdav
     ];
 
     options.mainUser = lib.mkOption {
@@ -91,7 +87,6 @@
         kernelPackages = pkgs.linuxPackages_latest;
       };
 
-      syncthing.dataDir = "/srv/storage/syncthing";
       programs.zsh.enable = true;
     };
   };
