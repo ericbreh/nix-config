@@ -4,10 +4,12 @@
     config,
     ...
   }: let
+    hostName = config.networking.hostName;
+    hcSecret = config.age.secrets."healthchecks-smart-${hostName}";
     notifyScript = pkgs.writeShellScript "smartd-notify" ''
       set -euo pipefail
-      HC_URL=$(cat ${config.age.secrets.healthchecks-smart.path})
-      echo "smartd alert on ${config.networking.hostName}: ''${SMARTD_FULLMESSAGE:-''${SMARTD_MESSAGE:-unknown}}"
+      HC_URL=$(cat ${hcSecret.path})
+      echo "smartd alert on ${hostName}: ''${SMARTD_FULLMESSAGE:-''${SMARTD_MESSAGE:-unknown}}"
       ${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail" || true
     '';
   in {
@@ -27,7 +29,7 @@
       serviceConfig.Type = "oneshot";
       script = ''
         set -euo pipefail
-        HC_URL=$(cat ${config.age.secrets.healthchecks-smart.path})
+        HC_URL=$(cat ${hcSecret.path})
 
         curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/start" || true
 

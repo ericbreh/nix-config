@@ -17,17 +17,17 @@
       zsh
 
       agenix
-      duckdns
-      nginx
       openssh
-      restic
       server-power
       smartd
       tailscale
 
       audiobookshelf
+      duckdns
       immich
       navidrome
+      nginx
+      restic
       samba
       syncthing
       webdav

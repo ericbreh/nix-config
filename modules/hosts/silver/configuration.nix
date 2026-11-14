@@ -18,8 +18,8 @@
 
       agenix
       openssh
-      restic
       server-power
+      smartd
       tailscale
     ];
 
