@@ -31,6 +31,7 @@
       showtime
       video-trimmer
       gnome-text-editor
+      gnome-calculator
 
       vscode
       obsidian
