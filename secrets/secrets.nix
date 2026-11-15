@@ -6,11 +6,11 @@ let
 in {
   "webdav.age".publicKeys = all;
   "restic.age".publicKeys = all;
-  "healthchecks-restic.age".publicKeys = all;
-  "healthchecks-restic-check.age".publicKeys = all;
-  "healthchecks-restic-offsite.age".publicKeys = all;
-  "healthchecks-smart-rhea.age".publicKeys = all;
-  "healthchecks-smart-silver.age".publicKeys = all;
-  "restic-silver-ssh.age".publicKeys = all;
+  "healthchecks-restic-local-rhea.age".publicKeys = all;
+  "healthchecks-restic-offsite-rhea.age".publicKeys = all;
+  "healthchecks-restic-check-rhea.age".publicKeys = all;
+  "healthchecks-smartd-rhea.age".publicKeys = all;
+  "healthchecks-smartd-silver.age".publicKeys = all;
+  "restic-offsite-ssh.age".publicKeys = all;
   "duckdns.age".publicKeys = all;
 }

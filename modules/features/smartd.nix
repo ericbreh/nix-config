@@ -5,7 +5,7 @@
     ...
   }: let
     hostName = config.networking.hostName;
-    hcSecret = config.age.secrets."healthchecks-smart-${hostName}";
+    hcSecret = config.age.secrets."healthchecks-smartd-${hostName}";
     notifyScript = pkgs.writeShellScript "smartd-notify" ''
       set -euo pipefail
       HC_URL=$(cat ${hcSecret.path})
@@ -22,8 +22,7 @@
       defaults.monitored = "-a -o on -S on -n standby,q -s (S/../.././03|L/../../7/04) -m <nomailer> -M exec ${notifyScript}";
     };
 
-    # Heartbeat so Healthchecks alerts if the host or smartd stops running.
-    systemd.services."smartd-healthchecks-ping" = {
+    systemd.services."smartd-ping" = {
       description = "Healthchecks heartbeat for smartd";
       path = [pkgs.curl pkgs.systemd];
       serviceConfig.Type = "oneshot";
@@ -42,7 +41,7 @@
       '';
     };
 
-    systemd.timers."smartd-healthchecks-ping" = {
+    systemd.timers."smartd-ping" = {
       description = "Daily Healthchecks heartbeat for smartd";
       wantedBy = ["timers.target"];
       timerConfig = {

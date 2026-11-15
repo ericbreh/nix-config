@@ -5,7 +5,11 @@
     config,
     ...
   }: let
+    hostName = config.networking.hostName;
+    hcSecret = job: config.age.secrets."healthchecks-restic-${job}-${hostName}".path;
     localRepo = "/srv/backup/restic";
+    offsiteHost = "silver";
+    offsiteRepo = "sftp:${config.mainUser}@${offsiteHost}:/srv/backup/restic";
     pruneOpts = [
       "--keep-daily 7"
       "--keep-weekly 4"
@@ -15,9 +19,9 @@
   in {
     programs.fuse.enable = true;
 
-    programs.ssh.knownHosts.silver.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILdX2ZGu+vzz7td6aKvsb2rrb14S3cBdc32ds3dPfrWm";
+    programs.ssh.knownHosts.${offsiteHost}.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILdX2ZGu+vzz7td6aKvsb2rrb14S3cBdc32ds3dPfrWm";
 
-    services.restic.backups.primary = {
+    services.restic.backups.local = {
       repository = localRepo;
       paths = ["/srv/storage"];
       passwordFile = config.age.secrets.restic.path;
@@ -28,60 +32,51 @@
       initialize = true;
       inherit pruneOpts;
       backupPrepareCommand = ''
-        ${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null "$(cat ${config.age.secrets.healthchecks-restic.path})/start" || true
+        ${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null "$(cat ${hcSecret "local"})/start" || true
+      '';
+      backupCleanupCommand = ''
+        HC_URL=$(cat ${hcSecret "local"})
+        if [ "$SERVICE_RESULT" = success ]; then
+          ${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL" || true
+        else
+          ${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail" || true
+        fi
       '';
     };
 
-    systemd.services."restic-backups-primary" = {
-      onSuccess = [
-        "restic-notify-success.service"
-        "restic-copy-silver.service"
-      ];
-      onFailure = ["restic-notify-failure.service"];
+    systemd.services."restic-backups-local" = {
+      onSuccess = ["restic-offsite.service"];
       unitConfig.RequiresMountsFor = ["/srv/storage" "/srv/backup"];
     };
-    systemd.services."restic-notify-success" = {
-      description = "Notify healthchecks.io of successful restic backup";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null $(cat ${config.age.secrets.healthchecks-restic.path})'";
-      };
-    };
-    systemd.services."restic-notify-failure" = {
-      description = "Notify healthchecks.io of failed restic backup";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null $(cat ${config.age.secrets.healthchecks-restic.path})/fail'";
-      };
-    };
 
-    systemd.services."restic-copy-silver" = {
-      description = "Copy restic snapshots from rhea local repo to silver";
+    systemd.services."restic-offsite" = {
+      description = "Copy restic snapshots to the offsite repo on ${offsiteHost}";
       path = [pkgs.restic pkgs.curl pkgs.openssh pkgs.coreutils];
+      restartIfChanged = false;
       environment = {
-        RESTIC_REPOSITORY = "sftp:${config.mainUser}@silver:/srv/backup/restic";
+        RESTIC_REPOSITORY = offsiteRepo;
         RESTIC_PASSWORD_FILE = config.age.secrets.restic.path;
-        RESTIC_CACHE_DIR = "/var/cache/restic-copy-silver";
+        RESTIC_CACHE_DIR = "/var/cache/restic-offsite";
       };
       serviceConfig = {
         Type = "oneshot";
-        CacheDirectory = "restic-copy-silver";
+        CacheDirectory = "restic-offsite";
       };
       unitConfig.RequiresMountsFor = ["/srv/backup"];
       script = ''
         set -euo pipefail
-        HC_URL=$(cat ${config.age.secrets.healthchecks-restic-offsite.path})
-        sftpArgs="-i ${config.age.secrets.restic-silver-ssh.path} -o IdentitiesOnly=yes"
+        HC_URL=$(cat ${hcSecret "offsite"})
+        sftpArgs="-i ${config.age.secrets.restic-offsite-ssh.path} -o IdentitiesOnly=yes"
 
         curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/start" || true
 
         if ! restic -o sftp.args="$sftpArgs" cat config >/dev/null; then
-          echo "Remote repo unreachable or missing; refusing to init (use existing /srv/backup/restic on silver)" >&2
+          echo "Offsite repo unreachable or missing; refusing to init" >&2
           curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail" || true
           exit 1
         fi
 
-        echo "Copying snapshots to silver"
+        echo "Copying snapshots to offsite repo on ${offsiteHost}"
         if ! restic -o sftp.args="$sftpArgs" copy \
           --from-repo ${localRepo} \
           --from-password-file ${config.age.secrets.restic.path}; then
@@ -89,9 +84,9 @@
           exit 1
         fi
 
-        echo "Pruning ${config.networking.hostName} snapshots on silver"
+        echo "Pruning ${hostName} snapshots in offsite repo"
         if ! restic -o sftp.args="$sftpArgs" forget --prune \
-          --host ${config.networking.hostName} \
+          --host ${hostName} \
           ${lib.concatStringsSep " " pruneOpts}; then
           curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail" || true
           exit 1
@@ -114,7 +109,7 @@
       unitConfig.RequiresMountsFor = ["/srv/backup"];
       script = ''
         set -euo pipefail
-        HC_URL=$(cat ${config.age.secrets.healthchecks-restic-check.path})
+        HC_URL=$(cat ${hcSecret "check"})
 
         WEEK=$(date +%-V)
         SUBSET=$(( (WEEK - 1) % 10 + 1 ))
