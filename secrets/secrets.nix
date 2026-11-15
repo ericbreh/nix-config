@@ -8,7 +8,9 @@ in {
   "restic.age".publicKeys = all;
   "healthchecks-restic.age".publicKeys = all;
   "healthchecks-restic-check.age".publicKeys = all;
+  "healthchecks-restic-offsite.age".publicKeys = all;
   "healthchecks-smart-rhea.age".publicKeys = all;
   "healthchecks-smart-silver.age".publicKeys = all;
+  "restic-silver-ssh.age".publicKeys = all;
   "duckdns.age".publicKeys = all;
 }

@@ -3,11 +3,13 @@
     pkgs,
     config,
     ...
-  }: {
+  }: let
+    localRepo = "/srv/backup/restic";
+  in {
     programs.fuse.enable = true;
 
     services.restic.backups.primary = {
-      repository = "/srv/backup/restic";
+      repository = localRepo;
       paths = ["/srv/storage"];
       passwordFile = config.age.secrets.restic.path;
       timerConfig = {
@@ -27,7 +29,10 @@
     };
 
     systemd.services."restic-backups-primary" = {
-      onSuccess = ["restic-notify-success.service"];
+      onSuccess = [
+        "restic-notify-success.service"
+        "restic-copy-silver.service"
+      ];
       onFailure = ["restic-notify-failure.service"];
       unitConfig.RequiresMountsFor = ["/srv/storage" "/srv/backup"];
     };
@@ -46,11 +51,49 @@
       };
     };
 
+    systemd.services."restic-copy-silver" = {
+      description = "Copy restic snapshots from rhea local repo to silver";
+      path = [pkgs.restic pkgs.curl pkgs.openssh pkgs.coreutils];
+      environment = {
+        RESTIC_REPOSITORY = "sftp:${config.mainUser}@silver:/srv/backup/restic";
+        RESTIC_PASSWORD_FILE = config.age.secrets.restic.path;
+      };
+      serviceConfig = {
+        Type = "oneshot";
+        CacheDirectory = "restic-copy-silver";
+        Environment = ["XDG_CACHE_HOME=%C"];
+      };
+      unitConfig.RequiresMountsFor = ["/srv/backup"];
+      script = ''
+        set -euo pipefail
+        HC_URL=$(cat ${config.age.secrets.healthchecks-restic-offsite.path})
+        sftpArgs="-i ${config.age.secrets.restic-silver-ssh.path} -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
+
+        curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/start" || true
+
+        if ! restic -o sftp.args="$sftpArgs" cat config >/dev/null; then
+          echo "Remote repo unreachable or missing; refusing to init (use existing /srv/backup/restic on silver)" >&2
+          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail" || true
+          exit 1
+        fi
+
+        echo "Copying snapshots to silver"
+        if restic -o sftp.args="$sftpArgs" copy \
+          --from-repo ${localRepo} \
+          --from-password-file ${config.age.secrets.restic.path}; then
+          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL" || true
+        else
+          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail" || true
+          exit 1
+        fi
+      '';
+    };
+
     systemd.services."restic-check" = {
       description = "Verify restic repository integrity";
       path = [pkgs.restic pkgs.curl pkgs.coreutils];
       environment = {
-        RESTIC_REPOSITORY = "/srv/backup/restic";
+        RESTIC_REPOSITORY = localRepo;
         RESTIC_PASSWORD_FILE = config.age.secrets.restic.path;
       };
       serviceConfig = {
