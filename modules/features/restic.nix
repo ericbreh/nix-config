@@ -1,10 +1,17 @@
 {...}: {
   flake.modules.nixos.restic = {
+    lib,
     pkgs,
     config,
     ...
   }: let
     localRepo = "/srv/backup/restic";
+    pruneOpts = [
+      "--keep-daily 7"
+      "--keep-weekly 4"
+      "--keep-monthly 12"
+      "--keep-yearly unlimited"
+    ];
   in {
     programs.fuse.enable = true;
 
@@ -17,12 +24,7 @@
         Persistent = true;
       };
       initialize = true;
-      pruneOpts = [
-        "--keep-daily 7"
-        "--keep-weekly 4"
-        "--keep-monthly 12"
-        "--keep-yearly unlimited"
-      ];
+      inherit pruneOpts;
       backupPrepareCommand = ''
         ${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null "$(cat ${config.age.secrets.healthchecks-restic.path})/start" || true
       '';
@@ -57,11 +59,11 @@
       environment = {
         RESTIC_REPOSITORY = "sftp:${config.mainUser}@silver:/srv/backup/restic";
         RESTIC_PASSWORD_FILE = config.age.secrets.restic.path;
+        RESTIC_CACHE_DIR = "/var/cache/restic-copy-silver";
       };
       serviceConfig = {
         Type = "oneshot";
         CacheDirectory = "restic-copy-silver";
-        Environment = ["XDG_CACHE_HOME=%C"];
       };
       unitConfig.RequiresMountsFor = ["/srv/backup"];
       script = ''
@@ -78,14 +80,22 @@
         fi
 
         echo "Copying snapshots to silver"
-        if restic -o sftp.args="$sftpArgs" copy \
+        if ! restic -o sftp.args="$sftpArgs" copy \
           --from-repo ${localRepo} \
           --from-password-file ${config.age.secrets.restic.path}; then
-          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL" || true
-        else
           curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail" || true
           exit 1
         fi
+
+        echo "Pruning ${config.networking.hostName} snapshots on silver"
+        if ! restic -o sftp.args="$sftpArgs" forget --prune \
+          --host ${config.networking.hostName} \
+          ${lib.concatStringsSep " " pruneOpts}; then
+          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail" || true
+          exit 1
+        fi
+
+        curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL" || true
       '';
     };
 
