@@ -14,7 +14,7 @@
     config = {
       networking.firewall.interfaces."tailscale0" = {
         allowedTCPPorts = [22000];
-        allowedUDPPorts = [22000 21027];
+        allowedUDPPorts = [22000];
       };
 
       services.syncthing = {
@@ -26,12 +26,21 @@
         openDefaultPorts = false;
 
         settings = {
+          options = {
+            globalAnnounceEnabled = false;
+            localAnnounceEnabled = false;
+            relaysEnabled = false;
+            natEnabled = false;
+          };
+
           devices = {
             "titan" = {
               id = "XOGJX6B-MK7S3GQ-ZLOHGFM-T7YX7DJ-M5WN2XI-5LACRNA-BP3ASAZ-L3XO2QI";
+              addresses = ["tcp://titan:22000"];
             };
             "rhea" = {
               id = "ONZWV4B-7ULTJX6-C3SJWWY-73TA4R5-XR4QDTR-XE6FG5Q-HZBGMZW-3GM7RAN";
+              addresses = ["tcp://rhea:22000"];
             };
           };
 

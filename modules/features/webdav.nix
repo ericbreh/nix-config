@@ -10,7 +10,7 @@
       settings = {
         address = "0.0.0.0";
         port = 8080;
-        directory = "/srv/storage/syncthing/notes";
+        directory = "${config.syncthing.dataDir}/notes";
         permissions = "CRUD";
         users = [
           {

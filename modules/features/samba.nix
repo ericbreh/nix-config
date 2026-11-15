@@ -11,14 +11,14 @@
           "server string" = config.networking.hostName;
           "netbios name" = config.networking.hostName;
           "security" = "user";
-          "hosts allow" = "100.64.0.0/10 127.0.0.1 localhost";
-          "hosts deny" = "0.0.0.0/0";
+          "hosts allow" = "100.64.0.0/10 fd7a:115c:a1e0::/48 127.0.0.1 ::1 localhost";
+          "hosts deny" = "ALL";
           "guest account" = "nobody";
           "map to guest" = "bad user";
           "vfs objects" = "catia fruit streams_xattr";
         };
         "syncthing" = {
-          "path" = "/srv/storage/syncthing";
+          "path" = config.syncthing.dataDir;
           "browseable" = "yes";
           "read only" = "no";
           "guest ok" = "no";
@@ -32,7 +32,7 @@
     };
 
     systemd.tmpfiles.rules = [
-      "d /srv/storage/syncthing 0750 ${config.mainUser} users - -"
+      "d ${config.syncthing.dataDir} 0750 ${config.mainUser} users - -"
     ];
   };
 }

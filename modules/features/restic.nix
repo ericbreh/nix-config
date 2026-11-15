@@ -15,6 +15,8 @@
   in {
     programs.fuse.enable = true;
 
+    programs.ssh.knownHosts.silver.publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILdX2ZGu+vzz7td6aKvsb2rrb14S3cBdc32ds3dPfrWm";
+
     services.restic.backups.primary = {
       repository = localRepo;
       paths = ["/srv/storage"];
@@ -69,7 +71,7 @@
       script = ''
         set -euo pipefail
         HC_URL=$(cat ${config.age.secrets.healthchecks-restic-offsite.path})
-        sftpArgs="-i ${config.age.secrets.restic-silver-ssh.path} -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
+        sftpArgs="-i ${config.age.secrets.restic-silver-ssh.path} -o IdentitiesOnly=yes"
 
         curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/start" || true
 
