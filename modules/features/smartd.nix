@@ -6,11 +6,14 @@
   }: let
     hostName = config.networking.hostName;
     hcSecret = config.age.secrets."healthchecks-smartd-${hostName}";
+    alertFile = "/var/lib/smartd-alert";
     notifyScript = pkgs.writeShellScript "smartd-notify" ''
       set -euo pipefail
       HC_URL=$(cat ${hcSecret.path})
-      echo "smartd alert on ${hostName}: ''${SMARTD_FULLMESSAGE:-''${SMARTD_MESSAGE:-unknown}}"
-      ${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail" || true
+      msg="smartd alert on ${hostName}: ''${SMARTD_FULLMESSAGE:-''${SMARTD_MESSAGE:-unknown}}"
+      echo "$msg"
+      echo "$(date -Is) $msg" >> ${alertFile}
+      ${pkgs.curl}/bin/curl -fsS -m 10 --retry 5 -o /dev/null --data-raw "$msg" "$HC_URL/fail" || true
     '';
   in {
     services.smartd = {
@@ -32,10 +35,15 @@
 
         curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/start" || true
 
-        if systemctl is-active --quiet smartd; then
+        if [ -e ${alertFile} ]; then
+          echo "Unresolved smartd alert; delete ${alertFile} once handled:" >&2
+          cat ${alertFile} >&2
+          curl -fsS -m 10 --retry 5 -o /dev/null --data-binary @${alertFile} "$HC_URL/fail" || true
+          exit 1
+        elif systemctl is-active --quiet smartd; then
           curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL" || true
         else
-          curl -fsS -m 10 --retry 5 -o /dev/null "$HC_URL/fail" || true
+          curl -fsS -m 10 --retry 5 -o /dev/null --data-raw "smartd is not running" "$HC_URL/fail" || true
           exit 1
         fi
       '';

@@ -9,6 +9,7 @@ in {
   "healthchecks-restic-local-rhea.age".publicKeys = all;
   "healthchecks-restic-offsite-rhea.age".publicKeys = all;
   "healthchecks-restic-check-rhea.age".publicKeys = all;
+  "healthchecks-restic-check-silver.age".publicKeys = all;
   "healthchecks-smartd-rhea.age".publicKeys = all;
   "healthchecks-smartd-silver.age".publicKeys = all;
   "restic-offsite-ssh.age".publicKeys = all;

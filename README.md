@@ -41,3 +41,9 @@ nix run home-manager -- switch --flake .#<host>
 ```sh
 nix run github:ericbreh/nix-config#nvim
 ```
+
+## Edit a secret
+
+```sh
+nix run github:ryantm/agenix -- -e <secret>.age
+```

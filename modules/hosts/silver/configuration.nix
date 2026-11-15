@@ -18,6 +18,7 @@
 
       agenix
       openssh
+      restic-check
       server-power
       smartd
       tailscale

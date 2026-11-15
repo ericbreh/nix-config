@@ -10,6 +10,7 @@
       healthchecks-restic-local-rhea.file = inputs.self + "/secrets/healthchecks-restic-local-rhea.age";
       healthchecks-restic-offsite-rhea.file = inputs.self + "/secrets/healthchecks-restic-offsite-rhea.age";
       healthchecks-restic-check-rhea.file = inputs.self + "/secrets/healthchecks-restic-check-rhea.age";
+      healthchecks-restic-check-silver.file = inputs.self + "/secrets/healthchecks-restic-check-silver.age";
       healthchecks-smartd-rhea.file = inputs.self + "/secrets/healthchecks-smartd-rhea.age";
       healthchecks-smartd-silver.file = inputs.self + "/secrets/healthchecks-smartd-silver.age";
       restic-offsite-ssh.file = inputs.self + "/secrets/restic-offsite-ssh.age";

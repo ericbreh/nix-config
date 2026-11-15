@@ -28,6 +28,7 @@
       navidrome
       nginx
       restic
+      restic-check
       samba
       syncthing
       webdav
